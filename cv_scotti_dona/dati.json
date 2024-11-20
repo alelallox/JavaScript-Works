@@ -1,0 +1,32 @@
+[
+    {
+        "nome": "Luca",
+        "cognome": "Rovetta",
+        "data_nascita": "10-11-2006",
+        "sesso": "M",
+        "sport": "calisthenics",
+        "impiego": "studente",
+        "hobby": "fumare Winston",
+        "thumbnail": "rovico.jpeg"
+    },
+    {
+        "nome": "Daniel",
+        "cognome": "Milanov Milenov",
+        "data_nascita": "2-08-2006",
+        "sesso": "M",
+        "sport": "nessuno",
+        "impiego": "studente",
+        "hobby": "scommettere, incontrare ragazze",
+        "thumbnail": "roito.jpeg"
+    },
+    {
+        "nome": "Gabriele",
+        "cognome": "Santarsiero",
+        "data_nascita": "23-04-2006",
+        "sesso": "M",
+        "sport": "palestra",
+        "impiego": "statuina al Menotti",
+        "hobby": "chiedere matematica",
+        "thumbnail": "santa.jpeg"
+    }
+]

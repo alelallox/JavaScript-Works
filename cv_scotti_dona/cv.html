@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="title">
+        <h1>CURRICULUM VITAE</h1>
+    </div>
+
+    <div class="controls">
+        <input type="file" id="fileInput" accept=".json">
+        <button onclick="analyzeFile()">Inserisci</button>
+    </div>
+
+    <div class="tabella">
+        <table>
+            <thead>
+                <tr>
+                    <th>NOME</th>
+                    <th>COGNOME</th>
+                    <th>CV</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function analyzeFile() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert('Selezionare un file JSON per continuare');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                try {
+                    let data = JSON.parse(event.target.result);
+
+                    // Se il file contiene un singolo oggetto invece di un array
+                    if (!Array.isArray(data)) {
+                        data = [data]; // Converti in array
+                    }
+
+                    populateTable(data);
+                } catch (error) {
+                    alert('Errore nella lettura del file JSON');
+                    console.error(error);
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function populateTable(data) {
+            const tableBody = document.getElementById('tableBody');
+            tableBody.innerHTML = ''; 
+
+            data.forEach(person => {
+                const row = document.createElement('tr');
+
+                const cellNome = document.createElement('td');
+                cellNome.textContent = person.nome;
+                row.appendChild(cellNome);
+
+                const cellCognome = document.createElement('td');
+                cellCognome.textContent = person.cognome;
+                row.appendChild(cellCognome);
+
+                const cellCV = document.createElement('td');
+                const thumbnailLink = document.createElement('a');
+                thumbnailLink.href = `cv2.html?nome=${person.nome}&cognome=${person.cognome}&data_nascita=${person.data_nascita}&sesso=${person.sesso}&impiego=${person.impiego}&sport=${person.sport}&hobby=${person.hobby}`;
+                thumbnailLink.target = "_blank"; 
+                const thumbnailImage = document.createElement('img');
+                thumbnailImage.src = person.thumbnail;
+                thumbnailImage.alt = "CV Thumbnail";
+                thumbnailImage.style.width = "50px"; 
+                thumbnailLink.appendChild(thumbnailImage);
+                cellCV.appendChild(thumbnailLink);
+                row.appendChild(cellCV);
+
+                tableBody.appendChild(row);
+            });
+        }
+        function analyzeFile() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert('Selezionare un file JSON per continuare');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                try {
+                    const data = JSON.parse(event.target.result);
+
+                    // Se il file contiene un singolo oggetto invece di un array
+                    if (!Array.isArray(data)) {
+                        data = [data]; // Converti in array
+                    }
+
+                    populateTable(data);
+                } catch (error) {
+                    alert('Errore nella lettura del file JSON');
+                    console.error(error);
+                }
+            };
+            reader.readAsText(file);
+        }
+        
+    </script>
+
+</body>
+</html>

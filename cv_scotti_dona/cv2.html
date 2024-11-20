@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dettagli CV</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>CURRICULUM VITAE</h1>
+    <div id="details"></div>
+
+    <script>
+        function getQueryParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return {
+                nome: urlParams.get("nome"),
+                cognome: urlParams.get("cognome"),
+                data_nascita: urlParams.get("data_nascita"),
+                sesso: urlParams.get("sesso"),
+                impiego: urlParams.get("impiego"),
+                sport: urlParams.get("sport"),
+                hobby: urlParams.get("hobby")
+            };
+        }
+
+        function displayDetails() {
+            const details = getQueryParams();
+            const detailsDiv = document.getElementById("details");
+
+            detailsDiv.innerHTML = `
+                <p><strong>Nome:</strong> ${details.nome}</p>
+                <p><strong>Cognome:</strong> ${details.cognome}</p>
+                <p><strong>Data di Nascita:</strong> ${details.data_nascita}</p>
+                <p><strong>Sesso:</strong> ${details.sesso}</p>
+                <p><strong>Impiego:</strong> ${details.impiego}</p>
+                <p><strong>Sport:</strong> ${details.sport}</p>
+                <p><strong>Hobby:</strong> ${details.hobby}</p>
+            `;
+        }
+
+        displayDetails();
+    </script>
+</body>
+</html>
