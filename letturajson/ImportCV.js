@@ -2,7 +2,7 @@ let indiceCV = localStorage.getItem("id"); caricaDatiCV(indiceCV);
 
 function caricaDatiCV(indice) {
     var file = new XMLHttpRequest();
-    let nameFile = "https://raw.githubusercontent.com/giulss06/tps/refs/heads/main/letturajson/" + indice + ".json";
+    let nameFile = "/github.com/alelallox/JavaScript-Works/blob/main/letturajson/Anagraf" + indice + ".json";
     file.open("GET", nameFile, true);
     file.send();
     file.onreadystatechange = function() {
