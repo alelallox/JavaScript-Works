@@ -1,0 +1,47 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f7fa;
+    margin: 50px;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px; /* Angoli leggermente arrotondati, non più circolare */
+    border: 3px solid #3498db; /* Colore aggiornato */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Ombreggiatura per profondità */
+}
+
+h2 {
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    color: #333; /* Colore scuro per contrasto */
+    margin-top: 15px;
+}
+
+p {
+    font-family: "Arial", sans-serif;
+    line-height: 1.6;
+    color: #555; /* Grigio per migliorare leggibilità */
+    margin-top: 10px;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 80px;
+    margin-left: 40px;
+    font-family: "Arial", sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+}
+
+.divTitolo {
+    display: flex;
+    flex-direction: column; /* Colonna per una migliore leggibilità */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}

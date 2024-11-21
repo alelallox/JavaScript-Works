@@ -1,0 +1,79 @@
+{
+    "Anagrafica": [
+        {
+            "id": "1",
+            "Immagine": "rovico.jpeg",
+            "Nome": "Luca",
+            "Cognome": "rovetta",
+            "Eta": "18",
+            "Indirizzo": "Via Roma",
+            "Citta": "Torino",
+            "Telefoni": [
+                {
+                    "Telefono1": "1234567890"
+                },
+                {
+                    "Telefono2": "0987654321"
+                }
+            ],
+            "Sport": [
+                {
+                    "Sport1": "Basket"
+                },
+                {
+                    "Sport2": "Nuoto"
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "Immagine": "roito.jpeg",
+            "Nome": "daniel",
+            "Cognome": "milanov",
+            "Eta": "23",
+            "Indirizzo": "Via Firenze",
+            "Citta": "Bergamo",
+            "Telefoni": [
+                {
+                    "Telefono1": "5647382910"
+                },
+                {
+                    "Telefono2": "6748392011"
+                }
+            ],
+            "Sport": [
+                {
+                    "Sport1": "Rugby"
+                },
+                {
+                    "Sport2": "Pallavolo"
+                }
+            ]
+        },
+        {
+            "id": "3",
+            "Immagine": "santa.jpeg",
+            "Nome": "gabriele",
+            "Cognome": "santarsiero",
+            "Eta": "28",
+            "Indirizzo": "Via Bologna",
+            "Citta": "Genova",
+            "Telefoni": [
+                {
+                    "Telefono1": "9876543210"
+                },
+                {
+                    "Telefono2": "1122334455"
+                }
+            ],
+            "Sport": [
+                {
+                    "Sport1": "Atletica"
+                },
+                {
+                    "Sport2": "Pallanuoto"
+                }
+            ]
+        }
+    ]
+}
