@@ -1,0 +1,34 @@
+{
+    "persone": [
+      {
+        "nome": "Daniel",
+        "cognome": "Milanov",
+        "eta": 18,
+        "indirizzo": "Via Roma 123",
+        "citta": "Lainate",
+        "telefoni": {
+          "telefono1": "1234567890",
+          "telefono2": "0987654321"
+        },
+        "sport": [
+          "calcio",
+          "tennis"
+        ]
+      },
+      {
+        "nome": "Gabriele",
+        "cognome": "Scotti",
+        "eta": 18,
+        "indirizzo": "Via Verdi 456",
+        "citta": "Lainate",
+        "telefoni": {
+          "telefono1": "1112223334",
+          "telefono2": "4445556667"
+        },
+        "sport": [
+          "rompere le pallle"
+        ]
+      }
+    ]
+  }
+  
