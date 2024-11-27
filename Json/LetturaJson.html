@@ -15,22 +15,16 @@
 
     <script>
         function caricaDati() {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'Json.json', true);
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    try {
-                        var data = JSON.parse(xhr.responseText);
-                        mostraInfo(data);
-                        document.getElementById("risForm").style.visibility = "visible";
-                    } catch (e) {
-                        console.error('Errore nel parsing del JSON:', e);
-                    }
-                } else if (xhr.readyState == 4) {
-                    console.error('Errore nel caricamento del file JSON: ' + xhr.status);
-                }
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                var myObj = JSON.parse(this.responseText);
+                document.getElementById("demo").innerHTML = myObj.nome + " " + myObj.auto[0].tipo;
+              }
             };
-            xhr.send();
+            
+            xmlhttp.open("GET", "Json.json", true);
+            xmlhttp.send();
         }
 
         function mostraInfo(ogg) {
