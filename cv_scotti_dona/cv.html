@@ -13,8 +13,20 @@
     </div>
 
     <div class="controls">
-        <input type="file" id="fileInput" accept=".json">
-        <button onclick="analyzeFile()">Inserisci</button>
+        <h3>Seleziona i file da caricare:</h3>
+        <div>
+            <input type="checkbox" id="file1" value="person_1.json">
+            <label for="file1">File 1</label>
+        </div>
+        <div>
+            <input type="checkbox" id="file2" value="person_2.json">
+            <label for="file2">File 2</label>
+        </div>
+        <div>
+            <input type="checkbox" id="file3" value="person_3.json">
+            <label for="file3">File 3</label>
+        </div>
+        <button onclick="loadSelectedFiles()">Carica</button>
     </div>
 
     <div class="tabella">
@@ -32,34 +44,34 @@
     </div>
 
     <script>
-        function analyzeFile() {
-            const fileInput = document.getElementById('fileInput');
-            const file = fileInput.files[0];
+        function loadSelectedFiles() {
+            const selectedFiles = [];
 
-            if (!file) {
-                alert('Selezionare un file JSON per continuare');
+            // Controlla quali file sono stati selezionati
+            document.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+                selectedFiles.push(checkbox.value);
+            });
+
+            if (selectedFiles.length === 0) {
+                alert('Seleziona almeno un file per continuare');
                 return;
             }
 
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                try {
-                    let data = JSON.parse(event.target.result);
+            const dataPromises = selectedFiles.map(file => fetch(file).then(response => response.json()));
 
-                    if (!Array.isArray(data)) {
-                        data = [data]; 
-                    }
-
-                    populateTable(data);
-                } catch (error) {
-                    alert('Errore nella lettura del file JSON');
+            Promise.all(dataPromises)
+                .then(dataSets => {
+                    // Combina tutti i dataset in un unico array
+                    const combinedData = dataSets.flat();
+                    populateTable(combinedData);
+                })
+                .catch(error => {https://github.com/alelallox/JavaScript-Works/blob/main/cv_scotti_dona/person_1.json
+                    alert('Errore durante il caricamento dei file');
                     console.error(error);
-                }
-            };
-            reader.readAsText(file);
+                });
         }
 
-        function Table(data) {
+        function populateTable(data) {
             const tableBody = document.getElementById('tableBody');
             tableBody.innerHTML = ''; 
 
@@ -89,7 +101,6 @@
                 tableBody.appendChild(row);
             });
         }
-        
     </script>
 
 </body>
