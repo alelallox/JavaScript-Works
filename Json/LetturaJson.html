@@ -19,11 +19,8 @@
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     var myObj = JSON.parse(this.responseText);
-
-                    // Mostra i dati nella tabella
                     mostraInfo(myObj);
 
-                    // Rendi visibile il contenitore
                     document.getElementById("risForm").style.visibility = "visible";
                 }
             };
@@ -33,14 +30,11 @@
         }
 
         function mostraInfo(ogg) {
-            // Svuota il contenuto precedente
             document.getElementById("stringaJSON").innerHTML = "";
-
-            // Crea una tabella
+            
             var tabella = document.createElement("table");
             tabella.setAttribute("border", "1");
 
-            // Crea l'intestazione
             var intestazione = document.createElement("tr");
             var colonne = ["Nome", "Cognome", "Età", "Indirizzo", "Città", "Telefono1", "Telefono2", "Sport"];
             colonne.forEach(function(colonna) {
@@ -50,7 +44,6 @@
             });
             tabella.appendChild(intestazione);
 
-            // Popola la tabella con i dati
             ogg.persone.forEach(function(persona) {
                 var riga = document.createElement("tr");
 
@@ -88,8 +81,7 @@
 
                 tabella.appendChild(riga);
             });
-
-            // Aggiungi la tabella al div
+            
             document.getElementById("stringaJSON").appendChild(tabella);
         }
     </script>
