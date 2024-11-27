@@ -47,7 +47,6 @@
         function loadSelectedFiles() {
             const selectedFiles = [];
 
-            // Controlla quali file sono stati selezionati
             document.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
                 selectedFiles.push(checkbox.value);
             });
