@@ -1,0 +1,28 @@
+{
+    "nome": "Daniel",
+    "cognome": "Milanov",
+    "dataDiNascita": "05-10-2017",
+    "foto": "roito-jpeg",
+    "telefono": [
+        {
+            "telefono1": "3219068876",
+            "telefono2": "3458890987"
+        }
+    ],
+    "mail": "lucafreakymila@gmail.com",
+    "istruzione": "Itis Freakyzzaro",
+    "qualifica": "chiaramente nessuna",
+    "esperienzaLavorativa": [
+        {
+            "lavoro1": "Tester ufficiale di Winston blu",
+            "lavoro2": "Giocatore per Victor Rho"
+        }
+    ],
+    "lingue": [
+        { 
+            "lingua1": "Linguaggio del Freaky ",
+            "lingua2": "Rhodense"
+        }
+    ]
+
+}
