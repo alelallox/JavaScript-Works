@@ -1,0 +1,28 @@
+{
+    "nome": "Andrea",
+    "cognome": "Rovetta",
+    "dataDiNascita": "03-05-2006",
+    "foto": "tucci.jpg",
+    "telefono": [
+        {
+            "telefono1": "3334445566",
+            "telefono2": "3453456677"
+        }
+    ],
+    "mail": "andrearovetta@gmail.com",
+    "istruzione": "Liceo Northside di Piacenza indirizzo Linguistico",
+    "qualifica": "Diploma",
+    "esperienzaLavorativa": [
+        {
+            "lavoro1": "Kebabbaro",
+            "lavoro2": "Problem solver"
+        }
+    ],
+    "lingue": [
+        { 
+            "lingua1": "Italiano",
+            "lingua2": "Francese"
+        }
+    ]
+
+}
