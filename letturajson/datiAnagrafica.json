@@ -1,0 +1,31 @@
+{
+    "persone": [
+        {
+          "id": 1,
+          "nome": "Luca",
+          "cognome": "Rovetta",
+          "eta": 18,
+          "indirizzo": "via Luca Rovetta 5",
+          "citta": "Rho",
+          "thumb": "rovico.jpeg"
+        },
+        {
+          "id": 2,
+          "nome": "Gabrile",
+          "cognome": "Santarsiero",
+          "eta": 65,
+          "indirizzo": "via Davide Rovetta 5",
+          "citta": "Lainate",
+          "thumb": "santa.jpeg"
+        },
+        {
+          "id": 3,
+          "nome": "Daniel",
+          "cognome": "Milanov",
+          "eta": 7,
+          "indirizzo": "via Sovico Milanov 7",
+          "citta": "Lainate",
+          "thumb": "roito.jpeg"
+        }
+    ]
+}
