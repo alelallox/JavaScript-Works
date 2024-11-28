@@ -1,0 +1,27 @@
+{
+    "nome": "Gabriele",
+    "cognome": "Santarsiero",
+    "dataDiNascita": "23-04-2006",
+    "foto": "santa.jpeg",
+    "telefono": [
+        {
+            "telefono1": "3667895321",
+            "telefono2": "3221563529"
+        }
+    ],
+    "mail": "gabriele.santarsiero@gmail.com",
+    "istruzione": "Itis Enrico Mattei",
+    "qualifica": "nessuna",
+    "esperienzaLavorativa": [
+        {
+            "lavoro1": "Statuina al teatro Arcimboldi",
+            "lavoro2": "Impiegato presso la ditta Bonfanti&Meraviglia"
+        }
+    ],
+    "lingue": [
+        { 
+            "lingua1": "Inglese"
+        }
+    ]
+
+}
