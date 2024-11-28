@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Pagina dettagliata</title>
+</head>
+<body>
+    <h1 class="titoloDettagli">Curriculum</h1>
+    <div id = "dettagliCV"></div>
+    
+    <script>
+        function getPersonIdFromUrl(){
+            const params = new URLSearchParams(window.location.search);
+            return params.get("id"); // Ritorna il valore del parametro 'id'
+        }
+
+        function caricaDettagliPersona(){
+            const idPersona = getPersonIdFromUrl();
+            if (!idPersona) {
+                document.getElementById("dettagliCV").innerText = "ID non trovato!";
+                return;
+            }
+
+            const cvFile = `cv_${idPersona}.json`;
+
+            var file = new XMLHttpRequest();
+            file.open("GET", cvFile, true);
+            file.send();
+            file.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    const cvData = JSON.parse(file.responseText);
+
+                    mostraDettagliCV(cvData);
+
+                } else if (this.readyState == 4) {
+                    document.getElementById("dettagliCV").innerText = "CV non trovato!";
+                }
+            };
+        }
+
+        function mostraDettagliCV(cvData){
+            const dettagliDiv = document.getElementById("dettagliCV");
+
+            dettagliDiv.innerHTML = `
+                <div class="container-cv">
+                    
+                    <div class="colonna-sx">
+                        <img src="${cvData.foto}" alt="Foto del profilo">
+                        <div class="info-personali">
+                            <p><strong>Nome:</strong> ${cvData.nome}</p>
+                            <p><strong>Cognome:</strong> ${cvData.cognome}</p>
+                            <p><strong>Data di nascita:</strong> ${cvData.dataDiNascita}</p>
+                            <p><strong>Telefono 1:</strong> ${cvData.telefono[0].telefono1}</p>
+                            <p><strong>Telefono 2:</strong> ${cvData.telefono[0].telefono2}</p>
+                            <p><strong>Email:</strong> ${cvData.mail}</p>
+                        </div>
+                    </div>
+                    <div class="colonna-dx">
+                        <div>
+                            <p class="titolo-sezione">Istruzione</p>
+                            <p>${cvData.istruzione}</p>
+                        </div>
+                        <div>
+                            <p class="titolo-sezione">Qualifica</p>
+                            <p>${cvData.qualifica}</p>
+                        </div>
+                        <div>
+                            <p class="titolo-sezione">Esperienza lavorativa</p>
+                            <p>Lavoro 1: ${cvData.esperienzaLavorativa[0].lavoro1}</p>
+                            <p>Lavoro 2: ${cvData.esperienzaLavorativa[0].lavoro2}</p>
+                        </div>
+                        <div>
+                            <p class="titolo-sezione">Lingue parlate</p>
+                            <p>Lingua 1: ${cvData.lingue[0].lingua1}</p>
+                            <p>Lingua 2: ${cvData.lingue[0].lingua2}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        caricaDettagliPersona();
+    </script>
+</body>
+</html>
