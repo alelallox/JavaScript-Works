@@ -1,17 +1,17 @@
 {
-    "nome": "Andrea",
+    "nome": "Luca",
     "cognome": "Rovetta",
-    "dataDiNascita": "03-05-2006",
-    "foto": "tucci.jpg",
+    "dataDiNascita": "00-00-2006",
+    "foto": "rovico.jpg",
     "telefono": [
         {
             "telefono1": "3334445566",
             "telefono2": "3453456677"
         }
     ],
-    "mail": "andrearovetta@gmail.com",
-    "istruzione": "Liceo Northside di Piacenza indirizzo Linguistico",
-    "qualifica": "Diploma",
+    "mail": "lucarovetta@gmail.com",
+    "istruzione": "nessuna",
+    "qualifica": "nessuna",
     "esperienzaLavorativa": [
         {
             "lavoro1": "Kebabbaro",
