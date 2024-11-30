@@ -1,31 +1,121 @@
 {
-    "persone": [
+    "Anagrafica": [
+
         {
-          "id": 1,
-          "nome": "Luca",
-          "cognome": "Rovetta",
-          "eta": 18,
-          "indirizzo": "via Luca Rovetta 5",
-          "citta": "Rho",
-          "thumb": "rovico.jpeg"
+            "id": "1",
+
+            "Immagine": "Sara Rossi.webp",
+            
+            "Nome": "Sara",
+
+            "Cognome": "Rossi",
+
+            "Eta": "16",
+
+            "Indirizzo": "Via Milano",
+
+            "Citta": "Milano",
+
+            "Telefoni": [
+
+                {
+                    "Telefono1": "6548585855"
+                },
+
+                {
+                    "Telefono2": "3787273278"
+                }
+            ],
+
+            "Sport": [
+                
+                {
+                    "Sport1": "Calcio"
+                },
+
+                {
+                    
+                    "Sport2": "Ippica"
+                }
+            ]
         },
+
         {
-          "id": 2,
-          "nome": "Gabrile",
-          "cognome": "Santarsiero",
-          "eta": 65,
-          "indirizzo": "via Davide Rovetta 5",
-          "citta": "Lainate",
-          "thumb": "santa.jpeg"
+            "id": "2",
+
+            "Immagine": "Antonio Rossi.webp",
+            
+            "Nome": "Antonio",
+
+            "Cognome": "Rossi",
+
+            "Eta": "21",
+
+            "Indirizzo": "Via Varese",
+
+            "Citta": "Novara",
+
+            "Telefoni": [
+
+                {
+                    "Telefono1": "8876876876"
+                },
+
+                {
+                    "Telefono2": "3787273278"
+                }
+            ],
+
+            "Sport": [
+                
+                {
+                    "Sport1": "Tennis"
+                },
+
+                {
+                    
+                    "Sport2": "Pallamano"
+                }
+            ]
         },
-        {
-          "id": 3,
-          "nome": "Daniel",
-          "cognome": "Milanov",
-          "eta": 7,
-          "indirizzo": "via Sovico Milanov 7",
-          "citta": "Lainate",
-          "thumb": "roito.jpeg"
+
+        {   
+            "id": "3",
+
+            "Immagine": "Filippo verdi.webp",
+            
+            "Nome": "Filippo",
+
+            "Cognome": "Verdi",
+
+            "Eta": "26",
+
+            "Indirizzo": "Via Monza",
+
+            "Citta": "Lainate",
+
+            "Telefoni": [
+
+                {
+                    "Telefono1": "7827798999"
+                },
+
+                {
+                    "Telefono2": "7868876868"
+                }
+            ],
+
+            "Sport": [
+                
+                {
+                    "Sport1": "Tennis"
+                },
+
+                {
+                    
+                    "Sport2": "Badminghton"
+                }
+            ]
         }
     ]
 }
