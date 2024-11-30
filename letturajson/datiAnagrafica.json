@@ -6,11 +6,11 @@
 
             "Immagine": "roito.jpeg",
             
-            "Nome": "Sara",
+            "Nome": "Daniel",
 
-            "Cognome": "Rossi",
+            "Cognome": "Milanov",
 
-            "Eta": "16",
+            "Eta": "18",
 
             "Indirizzo": "Via Milano",
 
@@ -35,7 +35,7 @@
 
                 {
                     
-                    "Sport2": "Ippica"
+                    "Sport2": "Tennis"
                 }
             ]
         },
@@ -45,11 +45,11 @@
 
             "Immagine": "rovico.jpeg",
             
-            "Nome": "Antonio",
+            "Nome": "Luca",
 
-            "Cognome": "Rossi",
+            "Cognome": "Rovetta",
 
-            "Eta": "21",
+            "Eta": "18",
 
             "Indirizzo": "Via Varese",
 
@@ -74,7 +74,7 @@
 
                 {
                     
-                    "Sport2": "Pallamano"
+                    "Sport2": "calcio"
                 }
             ]
         },
@@ -84,11 +84,11 @@
 
             "Immagine": "santa.jpeg",
             
-            "Nome": "Filippo",
+            "Nome": "Gabriele",
 
-            "Cognome": "Verdi",
+            "Cognome": "Santarsiero",
 
-            "Eta": "26",
+            "Eta": "38",
 
             "Indirizzo": "Via Monza",
 
@@ -108,7 +108,7 @@
             "Sport": [
                 
                 {
-                    "Sport1": "Tennis"
+                    "Sport1": "basket"
                 },
 
                 {
