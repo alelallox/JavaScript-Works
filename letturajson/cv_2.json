@@ -1,20 +1,20 @@
 {   
     "Immagine": "rovico.jpeg",
 
-    "Nominativo": "Sara Rossi",
+    "Nominativo": "Luca Rovetta",
 
     "Dati": {
 
         "Numero": "6548585855",
 
-        "Mail": "sara.rossi@mail.com",
+        "Mail": "luca.rovetta@mail.com",
 
         "Indirizzo": "Via Milano, Milano"
     },
 
-    "Posizione": "Marketing Manager",
+    "Posizione": "fallito",
 
-    "Esperienza": "7 Anni",
+    "Esperienza": "tutta la vita",
 
-    "Descrizione": "Esperta di marketing con un solido background nel settore digitale e retail. Negli ultimi anni ha guidato campagne di successo per marchi globali e ha sviluppato strategie innovative per migliorare l'engagement dei clienti e la brand awareness. Giulia eccelle nella gestione di team creativi e nell’analisi dei dati per ottimizzare le prestazioni delle campagne. Possiede una profonda conoscenza degli strumenti SEO, delle piattaforme social e dei software di analisi, come Google Analytics."
+    "Descrizione": "Passa le sue giornate a toccarti e fare faccie frecky."
 }
