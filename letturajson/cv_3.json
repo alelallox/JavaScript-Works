@@ -1,28 +1,20 @@
-{
-    "nome": "Daniel",
-    "cognome": "Milanov",
-    "dataDiNascita": "05-10-2017",
-    "foto": "roito-jpeg",
-    "telefono": [
-        {
-            "telefono1": "3219068876",
-            "telefono2": "3458890987"
-        }
-    ],
-    "mail": "lucafreakymila@gmail.com",
-    "istruzione": "Itis Freakyzzaro",
-    "qualifica": "chiaramente nessuna",
-    "esperienzaLavorativa": [
-        {
-            "lavoro1": "Tester ufficiale di Winston blu",
-            "lavoro2": "Giocatore per Victor Rho"
-        }
-    ],
-    "lingue": [
-        { 
-            "lingua1": "Linguaggio del Freaky ",
-            "lingua2": "Rhodense"
-        }
-    ]
+{   
+    "Immagine": "Sara Rossi.webp",
 
+    "Nominativo": "Sara Rossi",
+
+    "Dati": {
+
+        "Numero": "6548585855",
+
+        "Mail": "sara.rossi@mail.com",
+
+        "Indirizzo": "Via Milano, Milano"
+    },
+
+    "Posizione": "Marketing Manager",
+
+    "Esperienza": "7 Anni",
+
+    "Descrizione": "Esperta di marketing con un solido background nel settore digitale e retail. Negli ultimi anni ha guidato campagne di successo per marchi globali e ha sviluppato strategie innovative per migliorare l'engagement dei clienti e la brand awareness. Giulia eccelle nella gestione di team creativi e nell’analisi dei dati per ottimizzare le prestazioni delle campagne. Possiede una profonda conoscenza degli strumenti SEO, delle piattaforme social e dei software di analisi, come Google Analytics."
 }
