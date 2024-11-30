@@ -1,5 +1,79 @@
 <html>
     <head>
+        <style>
+            /* Impostazioni di base */
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f4;
+            }
+
+            /* Contenitore principale */
+            #formIngr {
+                padding: 20px;
+                text-align: center;
+                background-color: #fff;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                width: 300px;
+                margin: 50px auto;
+            }
+
+            /* Titolo */
+            .Titolo {
+                font-size: 24px;
+                margin-bottom: 20px;
+                color: #333;
+            }
+
+            /* Bottone per caricare i dati */
+            input[type="button"] {
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                text-align: center;
+                cursor: pointer;
+                font-size: 16px;
+                border-radius: 5px;
+            }
+
+            /* Tabella dei dati */
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+
+            th, td {
+                padding: 8px;
+                text-align: left;
+                border: 1px solid #ddd;
+            }
+
+            th {
+                background-color: #f2f2f2;
+            }
+
+            td img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+
+            #risForm {
+                display: none;
+                text-align: center;
+                margin-top: 30px;
+            }
+
+            /* Visibilità del form risultato */
+            #risForm {
+                visibility: visible;
+            }
+        </style>
     </head>
 
     <body>
