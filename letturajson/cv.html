@@ -1,87 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Pagina dettagliata</title>
-</head>
-<body>
-    <h1 class="titoloDettagli">Curriculum</h1>
-    <div id = "dettagliCV"></div>
-    
+<html>
+    <head>
+        <link rel="stylesheet" href="Style02.css">
+    </head>
+
+    <body>
+
+        <div id="intestazione" class="divTitolo">
+        </div>
+
+        <div id="contenutoCV" style="margin-top: 40px">
+        </div>
+        
+    </body>
+
     <script>
-        function getPersonIdFromUrl(){
-            const params = new URLSearchParams(window.location.search);
-            return params.get("id"); // Ritorna il valore del parametro 'id'
-        }
+        let indiceCV = localStorage.getItem("id");
 
-        function caricaDettagliPersona(){
-            const idPersona = getPersonIdFromUrl();
-            if (!idPersona) {
-                document.getElementById("dettagliCV").innerText = "ID non trovato!";
-                return;
-            }
+        caricaDatiCV(indiceCV);
 
-            const cvFile = `cv_${idPersona}.json`;
-
+        function caricaDatiCV(indice) {
             var file = new XMLHttpRequest();
-            file.open("GET", cvFile, true);
+            let nameFile = "https://raw.githubusercontent.com/alelallox/JavaScript-Works/refs/heads/main/letturajson/cv_" + indice + ".json";
+            
+            file.open("GET", nameFile, true);
             file.send();
+            
             file.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    const cvData = JSON.parse(file.responseText);
-
-                    mostraDettagliCV(cvData);
-
-                } else if (this.readyState == 4) {
-                    document.getElementById("dettagliCV").innerText = "CV non trovato!";
+                    var jsonDoc = JSON.parse(file.responseText);
+                    mostraInfoCV(jsonDoc, indice);
                 }
             };
         }
 
-        function mostraDettagliCV(cvData){
-            const dettagliDiv = document.getElementById("dettagliCV");
+        function mostraInfoCV(ogg, indice) {
+            console.log(indice);
 
-            dettagliDiv.innerHTML = `
-                <div class="container-cv">
-                    
-                    <div class="colonna-sx">
-                        <img src="${cvData.foto}" alt="Foto del profilo">
-                        <div class="info-personali">
-                            <p><strong>Nome:</strong> ${cvData.nome}</p>
-                            <p><strong>Cognome:</strong> ${cvData.cognome}</p>
-                            <p><strong>Data di nascita:</strong> ${cvData.dataDiNascita}</p>
-                            <p><strong>Telefono 1:</strong> ${cvData.telefono[0].telefono1}</p>
-                            <p><strong>Telefono 2:</strong> ${cvData.telefono[0].telefono2}</p>
-                            <p><strong>Email:</strong> ${cvData.mail}</p>
-                        </div>
-                    </div>
-                    <div class="colonna-dx">
-                        <div>
-                            <p class="titolo-sezione">Istruzione</p>
-                            <p>${cvData.istruzione}</p>
-                        </div>
-                        <div>
-                            <p class="titolo-sezione">Qualifica</p>
-                            <p>${cvData.qualifica}</p>
-                        </div>
-                        <div>
-                            <p class="titolo-sezione">Esperienza lavorativa</p>
-                            <p>Lavoro 1: ${cvData.esperienzaLavorativa[0].lavoro1}</p>
-                            <p>Lavoro 2: ${cvData.esperienzaLavorativa[0].lavoro2}</p>
-                        </div>
-                        <div>
-                            <p class="titolo-sezione">Lingue parlate</p>
-                            <p>Lingua 1: ${cvData.lingue[0].lingua1}</p>
-                            <p>Lingua 2: ${cvData.lingue[0].lingua2}</p>
-                        </div>
-                    </div>
-                </div>
-            `;
+            let nominativoTit = document.createElement("h2");
+            let posizioniTit = document.createElement("h2");
+            let esperienzaTit = document.createElement("h2");
+            let descrizioneTit = document.createElement("h2");
+
+            let nominativo = document.createElement("h1");
+            let posizioni = document.createElement("p");
+            let esperienza = document.createElement("p");
+            let descrizione = document.createElement("p");
+            let immagine = document.createElement("img");
+            let dati = document.createElement("p");
+
+            immagine.src = ogg.Immagine === undefined ? "" : ogg.Immagine;
+
+            nominativoTit.appendChild(document.createTextNode("Nominativo"));
+            nominativo.appendChild(document.createTextNode(ogg.Nominativo));
+
+            dati.appendChild(document.createTextNode("Mail: " + ogg.Dati.Mail));
+            dati.appendChild(document.createElement("br"));
+            dati.appendChild(document.createTextNode("Telefono: " + ogg.Dati.Numero));
+            dati.appendChild(document.createElement("br"));
+            dati.appendChild(document.createTextNode("Indirizzo: " + ogg.Dati.Indirizzo));
+
+            posizioniTit.appendChild(document.createTextNode("Posizioni"));
+            posizioni.appendChild(document.createTextNode(ogg.Posizione));
+
+            esperienzaTit.appendChild(document.createTextNode("Esperienza"));
+            esperienza.appendChild(document.createTextNode(ogg.Esperienza));
+            
+            descrizioneTit.appendChild(document.createTextNode("Descrizione"));
+            descrizione.appendChild(document.createTextNode(ogg.Descrizione));
+
+            document.getElementById("intestazione").appendChild(immagine);
+            document.getElementById("intestazione").appendChild(nominativo);
+
+            dati.classList.add("InfoDati");
+
+            document.getElementById("contenutoCV").appendChild(dati);
+            document.getElementById("contenutoCV").appendChild(posizioniTit);
+            document.getElementById("contenutoCV").appendChild(posizioni);
+            document.getElementById("contenutoCV").appendChild(esperienzaTit);
+            document.getElementById("contenutoCV").appendChild(esperienza);
+            document.getElementById("contenutoCV").appendChild(descrizioneTit);
+            document.getElementById("contenutoCV").appendChild(descrizione);
         }
-
-        caricaDettagliPersona();
     </script>
-</body>
+
 </html>
