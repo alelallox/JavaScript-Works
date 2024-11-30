@@ -18,7 +18,7 @@
     <script>
         function caricaDati() {
             var file = new XMLHttpRequest();
-            file.open("GET", "https://raw.githubusercontent.com/DavideStanco/TPS_DavideStanco/refs/heads/main/JSON/anagraficaCV/datiAnagrafica.json", true);
+            file.open("GET", "https://raw.githubusercontent.com/alelallox/JavaScript-Works/refs/heads/main/letturajson/datiAnagrafica.json", true);
             file.send();
             file.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
