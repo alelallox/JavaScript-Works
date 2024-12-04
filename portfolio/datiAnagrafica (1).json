@@ -1,0 +1,121 @@
+{
+    "Anagrafica": [
+
+        {
+            "id": "1",
+
+            "Immagine": "roito.jpeg",
+            
+            "Nome": "Daniel",
+
+            "Cognome": "Milanov",
+
+            "Eta": "18",
+
+            "Indirizzo": "Via Milano",
+
+            "Citta": "Milano",
+
+            "Telefoni": [
+
+                {
+                    "Telefono1": "6548585855"
+                },
+
+                {
+                    "Telefono2": "3787273278"
+                }
+            ],
+
+            "Sport": [
+                
+                {
+                    "Sport1": "Calcio"
+                },
+
+                {
+                    
+                    "Sport2": "Tennis"
+                }
+            ]
+        },
+
+        {
+            "id": "2",
+
+            "Immagine": "rovico.jpeg",
+            
+            "Nome": "Luca",
+
+            "Cognome": "Rovetta",
+
+            "Eta": "18",
+
+            "Indirizzo": "Via Varese",
+
+            "Citta": "Novara",
+
+            "Telefoni": [
+
+                {
+                    "Telefono1": "8876876876"
+                },
+
+                {
+                    "Telefono2": "3787273278"
+                }
+            ],
+
+            "Sport": [
+                
+                {
+                    "Sport1": "Tennis"
+                },
+
+                {
+                    
+                    "Sport2": "calcio"
+                }
+            ]
+        },
+
+        {   
+            "id": "3",
+
+            "Immagine": "santa.jpeg",
+            
+            "Nome": "Gabriele",
+
+            "Cognome": "Santarsiero",
+
+            "Eta": "38",
+
+            "Indirizzo": "Via Monza",
+
+            "Citta": "Lainate",
+
+            "Telefoni": [
+
+                {
+                    "Telefono1": "7827798999"
+                },
+
+                {
+                    "Telefono2": "7868876868"
+                }
+            ],
+
+            "Sport": [
+                
+                {
+                    "Sport1": "basket"
+                },
+
+                {
+                    
+                    "Sport2": "Badminghton"
+                }
+            ]
+        }
+    ]
+}
