@@ -20,7 +20,7 @@
 
         function caricaDatiCV(indice) {
             var file = new XMLHttpRequest();
-            let nameFile = "https://raw.githubusercontent.com/alelallox/JavaScript-Works/refs/heads/main/cv-online/1.json";
+            let nameFile = "https://raw.githubusercontent.com/alelallox/JavaScript-Works/refs/heads/main/cv-online/" + indice + ".json";
             
             file.open("GET", nameFile, true);
             file.send();
