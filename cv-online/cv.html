@@ -36,38 +36,24 @@
         function mostraInfoCV(ogg, indice) {
             console.log(indice);
 
-            let nominativoTit = document.createElement("h2");
-            let posizioniTit = document.createElement("h2");
-            let nascitaTit = document.createElement("h2");
-            let hobbyTit = document.createElement("h2");
-
-            let nominativo = document.createElement("h1");
-            let posizioni = document.createElement("p");
-            let nascita = document.createElement("p");
-            let hobby = document.createElement("p");
             let dati = document.createElement("p");
 
-            nominativoTit.appendChild(document.createTextNode("Nominativo"));
-            nominativo.appendChild(document.createTextNode(ogg.Nome + " " + ogg["Cognome "])); // Nome e Cognome
+            dati.appendChild(document.createTextNode("Nome: " + ogg.Nome));
+            dati.appendChild(document.createElement("br"));
+
+            dati.appendChild(document.createTextNode("Cognome: " + ogg["Cognome "]));
+            dati.appendChild(document.createElement("br"));
 
             dati.appendChild(document.createTextNode("Data di nascita: " + ogg["data di nascita"]));
             dati.appendChild(document.createElement("br"));
 
-            posizioniTit.appendChild(document.createTextNode("Impieghi"));
-            posizioni.appendChild(document.createTextNode(ogg["impieghi"]));
+            dati.appendChild(document.createTextNode("Impiego: " + ogg["impieghi"]));
+            dati.appendChild(document.createElement("br"));
 
-            hobbyTit.appendChild(document.createTextNode("Hobby"));
-            hobby.appendChild(document.createTextNode(ogg["hobby"]));
+            dati.appendChild(document.createTextNode("Hobby: " + ogg["hobby"]));
+            dati.appendChild(document.createElement("br"));
             
-            document.getElementById("intestazione").appendChild(nominativo);
-
-            dati.classList.add("InfoDati");
-
             document.getElementById("contenutoCV").appendChild(dati);
-            document.getElementById("contenutoCV").appendChild(posizioniTit);
-            document.getElementById("contenutoCV").appendChild(posizioni);
-            document.getElementById("contenutoCV").appendChild(hobbyTit);
-            document.getElementById("contenutoCV").appendChild(hobby);
         }
     </script>
 
