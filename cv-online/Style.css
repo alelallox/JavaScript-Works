@@ -1,0 +1,170 @@
+/* Definizione dei font personalizzati */
+@font-face {
+    font-family: "PrincipaleLight";
+    src: url("Comfortaa-Light.ttf");
+}
+
+@font-face {
+    font-family: "PrincipaleBold";
+    src: url("Comfortaa-Bold.ttf");
+}
+
+@font-face {
+    font-family: "Principale";
+    src: url("Comfortaa-Regular.ttf");
+}
+
+/* Impostazioni globali per il body */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "PrincipaleLight"; /* Imposta il font di default per il corpo */
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #f7f7f7; /* Aggiunta di un colore di sfondo neutro */
+}
+
+/* Contenitore principale per i form */
+.generale {
+    width: 500px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling per il messaggio di esito */
+#esito {
+    width: 100%;
+    height: 50px;
+    border-radius: 20px;
+    padding: 20px 0;
+    text-align: center;
+    display: none;
+    font-family: "PrincipaleBold";
+    color: black;
+    margin-bottom: 30px;
+}
+
+/* Stile per il form con bordi */
+.form {
+    text-align: center;
+    border: 2px solid black;
+    color: black;
+    width: 100%;
+    height: 200px;
+    border-radius: 30px;
+    padding: 20px;
+    box-sizing: border-box; /* Assicura che il padding non influisca sulla larghezza */
+}
+
+/* Styling per le etichette (username e password) */
+.username, .passrd {
+    font-family: "PrincipaleLight";
+    margin-bottom: 10px; /* Maggiore spazio tra le etichette e i campi di input */
+}
+
+/* Styling per i campi di input */
+input[type="text"], input[type="password"] {
+    width: 80%; /* Maggiore larghezza per un aspetto più bilanciato */
+    height: 40px;
+    border-radius: 20px;
+    border: 2px solid #ccc;
+    background-color: #fff;
+    color: black;
+    text-align: center;
+    font-family: "PrincipaleLight";
+    margin-top: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box; /* Include padding e border nel calcolo della larghezza */
+}
+
+/* Styling per i bottoni */
+input[type="button"], button {
+    width: 60%;
+    height: 50px;
+    border-radius: 20px;
+    background-color: white;
+    color: black;
+    font-family: "PrincipaleBold";
+    border: 2px solid #ccc;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Effetto hover per i bottoni */
+input[type="button"]:hover, button:hover {
+    background-color: black;
+    color: white;
+}
+
+/* Styling per la tabella */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Unisce i bordi delle celle senza spazi tra di esse */
+    margin-bottom: 20px; /* Spazio sotto la tabella */
+}
+
+/* Stile per le celle della tabella (td) */
+td, th {
+    font-family: "PrincipaleLight";
+    font-size: 14px;
+    border: 2px solid lightgray; /* Bordi sottili per ogni cella */
+    text-align: center;
+    padding: 10px;
+}
+
+/* Stile per l'intestazione della tabella (th) */
+th {
+    font-family: "Principale";
+    font-size: 14px;
+    font-weight: bold; /* Testo in grassetto per l'intestazione */
+    background-color: #f2f2f2; /* Colore di sfondo per l'intestazione */
+}
+
+/* Stile per il titolo */
+.titolo {
+    font-family: "PrincipaleBold";
+    font-size: xx-large;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Stile per i testi degli elenchi */
+.testoElenco {
+    font-family: "PrincipaleLight";
+    font-size: medium;
+}
+
+/* Styling per l'immagine del profilo */
+.immagineProfilo {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    border: 2px solid lightgray;
+    object-fit: cover; /* Assicura che l'immagine venga ritagliata senza distorsioni */
+}
+
+/* Effetto hover per l'immagine del profilo */
+.immagineProfilo:hover {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Aggiungi margini, padding e centrazione globale */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Modifiche generali per garantire la leggibilità */
+h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+    font-family: "Principale", sans-serif;
+}

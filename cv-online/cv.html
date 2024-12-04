@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+
+    <body>
+
+        <div id="intestazione" class="divTitolo">
+        </div>
+
+        <div id="contenutoCV" style="margin-top: 40px">
+        </div>
+
+    </body>
+
+    <script>
+        let indiceCV = localStorage.getItem("id");
+
+        caricaDatiCV(indiceCV);
+
+        function caricaDatiCV(indice) {
+            var file = new XMLHttpRequest();
+            let nameFile = "https://raw.githubusercontent.com/alelallox/JavaScript-Works/refs/heads/main/letturajson/" + indice + ".json";
+            
+            file.open("GET", nameFile, true);
+            file.send();
+            
+            file.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var jsonDoc = JSON.parse(file.responseText);
+                    mostraInfoCV(jsonDoc, indice);
+                }
+            };
+        }
+
+        function mostraInfoCV(ogg, indice) {
+            console.log(indice);
+
+            let nominativoTit = document.createElement("h2");
+            let posizioniTit = document.createElement("h2");
+            let nascitaTit = document.createElement("h2");
+            let hobbyTit = document.createElement("h2");
+
+            let nominativo = document.createElement("h1");
+            let posizioni = document.createElement("p");
+            let nascita = document.createElement("p");
+            let hobby = document.createElement("p");
+            let immagine = document.createElement("img");
+            let dati = document.createElement("p");
+
+            immagine.src = ogg.Immagine === undefined ? "" : ogg.Immagine;
+
+            nominativoTit.appendChild(document.createTextNode("Nominativo"));
+            nominativo.appendChild(document.createTextNode(ogg.Nome + " " + ogg["Cognome "])); // Nome e Cognome
+
+            dati.appendChild(document.createTextNode("Data di nascita: " + ogg["data di nascita"]));
+            dati.appendChild(document.createElement("br"));
+
+            posizioniTit.appendChild(document.createTextNode("Impieghi"));
+            posizioni.appendChild(document.createTextNode(ogg["impieghi"]));
+
+            hobbyTit.appendChild(document.createTextNode("Hobby"));
+            hobby.appendChild(document.createTextNode(ogg["hobby"]));
+            
+            document.getElementById("intestazione").appendChild(immagine);
+            document.getElementById("intestazione").appendChild(nominativo);
+
+            dati.classList.add("InfoDati");
+
+            document.getElementById("contenutoCV").appendChild(dati);
+            document.getElementById("contenutoCV").appendChild(posizioniTit);
+            document.getElementById("contenutoCV").appendChild(posizioni);
+            document.getElementById("contenutoCV").appendChild(hobbyTit);
+            document.getElementById("contenutoCV").appendChild(hobby);
+        }
+    </script>
+
+</html>
