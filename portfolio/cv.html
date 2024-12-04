@@ -1,0 +1,146 @@
+<html>
+    <head>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f4;
+            }
+            #intestazione {
+                text-align: center;
+                margin-top: 20px;
+                padding: 20px;
+                background-color: #fff;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+            }
+            #intestazione img {
+                border-radius: 50%;
+                width: 150px;
+                height: 150px;
+                object-fit: cover;
+                margin-bottom: 15px;
+            }
+
+            h1, h2 {
+                color: #333;
+                font-weight: normal;
+            }
+
+            h1 {
+                font-size: 28px;
+                margin-bottom: 10px;
+            }
+
+            h2 {
+                font-size: 22px;
+                margin-top: 20px;
+            }
+
+            p {
+                font-size: 16px;
+                color: #555;
+                line-height: 1.6;
+            }
+
+            .InfoDati {
+                background-color: #fff;
+                padding: 15px;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                margin-bottom: 20px;
+            }
+
+            #contenutoCV {
+                margin: 30px auto;
+                max-width: 900px;
+                padding: 20px;
+                background-color: #fff;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div id="intestazione" class="divTitolo">
+        </div>
+
+        <div id="contenutoCV" style="margin-top: 40px">
+        </div>
+
+    </body>
+
+    <script>
+        let indiceCV = localStorage.getItem("id");
+
+        caricaDatiCV(indiceCV);
+
+        function caricaDatiCV(indice) {
+            var file = new XMLHttpRequest();
+            let nameFile = "https://raw.githubusercontent.com/alelallox/JavaScript-Works/refs/heads/main/letturajson/cv_" + indice + ".json";
+            
+            file.open("GET", nameFile, true);
+            file.send();
+            
+            file.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var jsonDoc = JSON.parse(file.responseText);
+                    mostraInfoCV(jsonDoc, indice);
+                }
+            };
+        }
+
+        function mostraInfoCV(ogg, indice) {
+            console.log(indice);
+
+            let nominativoTit = document.createElement("h2");
+            let posizioniTit = document.createElement("h2");
+            let esperienzaTit = document.createElement("h2");
+            let descrizioneTit = document.createElement("h2");
+
+            let nominativo = document.createElement("h1");
+            let posizioni = document.createElement("p");
+            let esperienza = document.createElement("p");
+            let descrizione = document.createElement("p");
+            let immagine = document.createElement("img");
+            let dati = document.createElement("p");
+
+            immagine.src = ogg.Immagine === undefined ? "" : ogg.Immagine;
+
+            nominativoTit.appendChild(document.createTextNode("Nominativo"));
+            nominativo.appendChild(document.createTextNode(ogg.Nominativo));
+
+            dati.appendChild(document.createTextNode("Mail: " + ogg.Dati.Mail));
+            dati.appendChild(document.createElement("br"));
+            dati.appendChild(document.createTextNode("Telefono: " + ogg.Dati.Numero));
+            dati.appendChild(document.createElement("br"));
+            dati.appendChild(document.createTextNode("Indirizzo: " + ogg.Dati.Indirizzo));
+
+            posizioniTit.appendChild(document.createTextNode("Posizioni"));
+            posizioni.appendChild(document.createTextNode(ogg.Posizione));
+
+            esperienzaTit.appendChild(document.createTextNode("Esperienza"));
+            esperienza.appendChild(document.createTextNode(ogg.Esperienza));
+            
+            descrizioneTit.appendChild(document.createTextNode("Descrizione"));
+            descrizione.appendChild(document.createTextNode(ogg.Descrizione));
+
+            document.getElementById("intestazione").appendChild(immagine);
+            document.getElementById("intestazione").appendChild(nominativo);
+
+            dati.classList.add("InfoDati");
+
+            document.getElementById("contenutoCV").appendChild(dati);
+            document.getElementById("contenutoCV").appendChild(posizioniTit);
+            document.getElementById("contenutoCV").appendChild(posizioni);
+            document.getElementById("contenutoCV").appendChild(esperienzaTit);
+            document.getElementById("contenutoCV").appendChild(esperienza);
+            document.getElementById("contenutoCV").appendChild(descrizioneTit);
+            document.getElementById("contenutoCV").appendChild(descrizione);
+        }
+    </script>
+
+</html>
