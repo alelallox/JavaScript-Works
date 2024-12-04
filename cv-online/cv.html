@@ -45,10 +45,7 @@
             let posizioni = document.createElement("p");
             let nascita = document.createElement("p");
             let hobby = document.createElement("p");
-            let immagine = document.createElement("img");
             let dati = document.createElement("p");
-
-            immagine.src = ogg.Immagine === undefined ? "" : ogg.Immagine;
 
             nominativoTit.appendChild(document.createTextNode("Nominativo"));
             nominativo.appendChild(document.createTextNode(ogg.Nome + " " + ogg["Cognome "])); // Nome e Cognome
@@ -62,7 +59,6 @@
             hobbyTit.appendChild(document.createTextNode("Hobby"));
             hobby.appendChild(document.createTextNode(ogg["hobby"]));
             
-            document.getElementById("intestazione").appendChild(immagine);
             document.getElementById("intestazione").appendChild(nominativo);
 
             dati.classList.add("InfoDati");
