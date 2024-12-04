@@ -1,4 +1,4 @@
-/* Definizione dei font personalizzati */
+/* ======== Font Personalizzati ======== */
 @font-face {
     font-family: "PrincipaleLight";
     src: url("Comfortaa-Light.ttf");
@@ -14,19 +14,19 @@
     src: url("Comfortaa-Regular.ttf");
 }
 
-/* Impostazioni globali per il body */
+/* ======== Stile Globale ======== */
 body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: "PrincipaleLight"; /* Imposta il font di default per il corpo */
+    font-family: "PrincipaleLight"; /* Font predefinito */
     margin: 0;
     padding: 0;
     height: 100vh;
-    background-color: #f7f7f7; /* Aggiunta di un colore di sfondo neutro */
+    background-color: #f7f7f7; /* Sfondo neutro */
 }
 
-/* Contenitore principale per i form */
+/* ======== Contenitore Principale ======== */
 .generale {
     width: 500px;
     padding: 20px;
@@ -35,7 +35,7 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Styling per il messaggio di esito */
+/* ======== Esito e Messaggi ======== */
 #esito {
     width: 100%;
     height: 50px;
@@ -48,7 +48,7 @@ body {
     margin-bottom: 30px;
 }
 
-/* Stile per il form con bordi */
+/* ======== Form ======== */
 .form {
     text-align: center;
     border: 2px solid black;
@@ -57,18 +57,18 @@ body {
     height: 200px;
     border-radius: 30px;
     padding: 20px;
-    box-sizing: border-box; /* Assicura che il padding non influisca sulla larghezza */
+    box-sizing: border-box; /* Include padding e bordi nella larghezza */
 }
 
-/* Styling per le etichette (username e password) */
+/* ======== Etichette dei Campi ======== */
 .username, .passrd {
     font-family: "PrincipaleLight";
-    margin-bottom: 10px; /* Maggiore spazio tra le etichette e i campi di input */
+    margin-bottom: 10px; /* Spazio tra etichette e campi */
 }
 
-/* Styling per i campi di input */
+/* ======== Campi di Input ======== */
 input[type="text"], input[type="password"] {
-    width: 80%; /* Maggiore larghezza per un aspetto più bilanciato */
+    width: 80%; /* Adattabile al contenitore */
     height: 40px;
     border-radius: 20px;
     border: 2px solid #ccc;
@@ -78,10 +78,10 @@ input[type="text"], input[type="password"] {
     font-family: "PrincipaleLight";
     margin-top: 10px;
     margin-bottom: 20px;
-    box-sizing: border-box; /* Include padding e border nel calcolo della larghezza */
+    box-sizing: border-box;
 }
 
-/* Styling per i bottoni */
+/* ======== Pulsanti ======== */
 input[type="button"], button {
     width: 60%;
     height: 50px;
@@ -95,37 +95,34 @@ input[type="button"], button {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Effetto hover per i bottoni */
 input[type="button"]:hover, button:hover {
     background-color: black;
     color: white;
 }
 
-/* Styling per la tabella */
+/* ======== Tabella ======== */
 table {
     width: 100%;
-    border-collapse: collapse; /* Unisce i bordi delle celle senza spazi tra di esse */
-    margin-bottom: 20px; /* Spazio sotto la tabella */
+    border-collapse: collapse; /* Unione dei bordi */
+    margin-bottom: 20px;
 }
 
-/* Stile per le celle della tabella (td) */
 td, th {
     font-family: "PrincipaleLight";
     font-size: 14px;
-    border: 2px solid lightgray; /* Bordi sottili per ogni cella */
+    border: 2px solid lightgray;
     text-align: center;
     padding: 10px;
 }
 
-/* Stile per l'intestazione della tabella (th) */
 th {
     font-family: "Principale";
     font-size: 14px;
-    font-weight: bold; /* Testo in grassetto per l'intestazione */
-    background-color: #f2f2f2; /* Colore di sfondo per l'intestazione */
+    font-weight: bold;
+    background-color: #f2f2f2;
 }
 
-/* Stile per il titolo */
+/* ======== Titolo ======== */
 .titolo {
     font-family: "PrincipaleBold";
     font-size: xx-large;
@@ -133,27 +130,20 @@ th {
     margin-bottom: 20px;
 }
 
-/* Stile per i testi degli elenchi */
-.testoElenco {
-    font-family: "PrincipaleLight";
-    font-size: medium;
-}
-
-/* Styling per l'immagine del profilo */
+/* ======== Immagine Profilo ======== */
 .immagineProfilo {
     width: 50px;
     height: 50px;
     border-radius: 5px;
     border: 2px solid lightgray;
-    object-fit: cover; /* Assicura che l'immagine venga ritagliata senza distorsioni */
+    object-fit: cover; /* Adatta l'immagine senza distorsioni */
 }
 
-/* Effetto hover per l'immagine del profilo */
 .immagineProfilo:hover {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Aggiungi margini, padding e centrazione globale */
+/* ======== Contenitori Flessibili ======== */
 .container {
     display: flex;
     flex-direction: column;
@@ -162,7 +152,7 @@ th {
     padding: 20px;
 }
 
-/* Modifiche generali per garantire la leggibilità */
+/* ======== Testi Generici ======== */
 h1, h2, h3, p {
     margin: 0;
     padding: 0;
