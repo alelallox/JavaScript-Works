@@ -41,7 +41,7 @@
 
         function mostraInfo(ogg) {
             var tabella = document.createElement("table");
-            var colonnaIndici = ["Immagine", "Nome", "Cognome", "Età", "Indirizzo", "Città", "Telefono 1", "Telefono 2", "Sport 1", "Sport 2"];
+            var colonnaIndici = ["Immagine", "Nome", "Cognome", "Età", "Indirizzo", "Città", "Telefono 1", "Telefono 2", "Sport 1", "Sport 2", "Portfolio"];
             var colonnaTit = document.createElement("tr");
 
             for (let i = 0; i < colonnaIndici.length; i++) {
@@ -96,6 +96,9 @@
                 var rigaBottone = document.createElement("td");
                 rigaBottone.appendChild(bottone);
 
+                var rigaPortfolio = document.createElement("td");
+                rigaPortfolio.appendChild(bottone);
+
                 colonna.appendChild(rigaBottone);
                 colonna.appendChild(rigaNome);
                 colonna.appendChild(rigaCognome);
@@ -106,6 +109,8 @@
                 colonna.appendChild(rigaTelefono2);
                 colonna.appendChild(rigaSport1);
                 colonna.appendChild(rigaSport2);
+                colonna.appendChild(rigaPortfolio);
+            
 
                 tabella.appendChild(colonna);
             }
