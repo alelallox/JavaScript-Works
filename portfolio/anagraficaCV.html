@@ -92,29 +92,12 @@
                     console.log("Bottone premuto");
                     window.location.href = "cv.html";
 
-               let bottonePt = document.createElement("img");
-        
-                bottonePt.src = "portafoglio.png";
-        
-                bottonePt.classList.add("immagine")
-        
-                bottonePt.addEventListener("click", function() {
-        
-                    localStorage.setItem("indice", ogg.Anagrafica[i].id);
-        
-                    console.log("Bottone premuto");
-        
-                    window.location.href = "Portafoglio.html";
             });
 
                 
 
                 var rigaBottone = document.createElement("td");
-                rigaBottone.appendChild(bottone);
-
-                var rigaBottonePf = document.createElement("td");
-
-                rigaBottonePf.appendChild(bottonePt);
+                rigaBottone.appendChild(bottone)
                 colonna.appendChild(rigaBottone);
                 colonna.appendChild(rigaNome);
                 colonna.appendChild(rigaCognome);
