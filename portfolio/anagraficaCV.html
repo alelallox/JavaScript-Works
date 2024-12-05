@@ -91,12 +91,30 @@
                     localStorage.setItem("id", ogg.Anagrafica[i].id);
                     console.log("Bottone premuto");
                     window.location.href = "cv.html";
+
+                var immagineCellPortfolio = document.createElement("td");
+                var linkPortfolio = document.createElement("a");
+                linkPortfolio.href = `portfolio.html?id=${persona.id}`; 
+                linkPortfolio.target = "_blank";
+                    
+                var imgPortfolio = document.createElement("img");
+                imgPortfolio.src = persona.portfolio;
+                imgPortfolio.alt = "Portfolio di " + persona.nome;
+                imgPortfolio.style.width = "100px";
+
+                linkPortfolio.appendChild(imgPortfolio); 
+                immagineCellPortfolio.appendChild(linkPortfolio);
                 });
+                
 
                 var rigaBottone = document.createElement("td");
                 rigaBottone.appendChild(bottone);
 
+                var immagineCellPortfolio = document.createElement("td");
+                
+
                 colonna.appendChild(rigaBottone);
+                colonna.appendchild(immagineCellPortfolio);
                 colonna.appendChild(rigaNome);
                 colonna.appendChild(rigaCognome);
                 colonna.appendChild(rigaEta);
