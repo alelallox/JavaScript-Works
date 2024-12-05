@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Portfolio</title>
+</head>
+<body>
+    <h1 class="titoloDettagli">Portfolio</h1>
+    <div id="dettagliCV"></div>
+    
+    <script>
+        function getPersonIdFromUrl(){
+            const params = new URLSearchParams(window.location.search);
+            return params.get("id");
+        }
+
+        function caricaPortfolio(){
+            const idPersona = getPersonIdFromUrl();
+            if (!idPersona) {
+                document.getElementById("dettagliCV").innerText = "ID non trovato!";
+                return;
+            }
+
+            const pfFile = `pf_${idPersona}.xml`;
+
+            var file = new XMLHttpRequest();
+            file.open("GET", pfFile, true);
+            file.send();
+            file.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    const pfData = file.responseXML;
+
+                    if (pfData) {
+                        mostraDettagliCV(pfData);
+                    } else {
+                        document.getElementById("dettagliCV").innerText = "Errore nel parsing del file XML.";
+                    }
+
+                } else if (this.readyState == 4) {
+                    document.getElementById("dettagliCV").innerText = "CV non trovato!";
+                }
+            };
+        }
+
+        function mostraDettagliCV(pfData){
+            const dettagliDiv = document.getElementById("dettagliCV");
+            
+            const titolo = pfData.getElementsByTagName("titolo")[0]?.textContent || "Nome non disponibile";
+            const abstract = pfData.getElementsByTagName("abstract")[0]?.textContent || "Cognome non disponibile";
+            const link = pfData.getElementsByTagName("link")[0]?.textContent || "Professione non disponibile";
+            
+            dettagliDiv.innerHTML = `
+                <div class="container-pf">
+                    <div class="info-portfolio">
+                        <p class="titolo-sezione">${titolo}</p>
+                        <p class="abstract-portfolio"> ${abstract}</p>
+                        <p><a href="${link}" target="_blank">${link}</a></p>
+                    </div>
+                </div>
+            `;
+        }
+
+        caricaPortfolio();
+    </script>
+</body>
+</html>
