@@ -1,10 +1,7 @@
 <html>
     <head>
-        <head>
         <link rel="stylesheet" href="Style.css">
     </head>
-    </head>
-
     <body>
 
         <div id="formIngr" class="generale"> 
@@ -41,18 +38,19 @@
 
         function mostraInfo(ogg) {
             var tabella = document.createElement("table");
-            var colonnaIndici = ["Immagine", "Nome", "Cognome", "Età", "Indirizzo", "Città", "Telefono 1", "Telefono 2", "Sport 1", "Sport 2"];
+            var colonnaIndici = ["Immagine", "Nome", "Cognome", "Età", "Indirizzo", "Città", "Telefono 1", "Telefono 2", "Sport 1", "Sport 2", "Portfolio"];
             var colonnaTit = document.createElement("tr");
 
+            // Aggiungi intestazione della tabella
             for (let i = 0; i < colonnaIndici.length; i++) {
                 var righe = document.createElement("th");
                 righe.appendChild(document.createTextNode(colonnaIndici[i]));
                 colonnaTit.appendChild(righe);
             }
-
             tabella.appendChild(colonnaTit);
 
-            for (let i = 0; i < 3; i++) {
+            // Aggiungi righe per ogni persona
+            for (let i = 0; i < 3; i++) { // Modificato per iterare sui primi 3
                 var colonna = document.createElement("tr");
 
                 var rigaNome = document.createElement("td");
@@ -71,20 +69,36 @@
                 rigaCitta.appendChild(document.createTextNode(ogg.Anagrafica[i].Citta));
 
                 var rigaTelefono1 = document.createElement("td");
-                rigaTelefono1.appendChild(document.createTextNode(ogg.Anagrafica[i].Telefoni[0].Telefono1 == undefined ? "" : ogg.Anagrafica[i].Telefoni[0].Telefono1));
+                rigaTelefono1.appendChild(document.createTextNode(ogg.Anagrafica[i].Telefoni[0]?.Telefono1 || ""));
 
                 var rigaTelefono2 = document.createElement("td");
-                rigaTelefono2.appendChild(document.createTextNode(ogg.Anagrafica[i].Telefoni[1].Telefono2 == undefined ? "" : ogg.Anagrafica[i].Telefoni[1].Telefono2));
+                rigaTelefono2.appendChild(document.createTextNode(ogg.Anagrafica[i].Telefoni[1]?.Telefono2 || ""));
 
                 var rigaSport1 = document.createElement("td");
-                rigaSport1.appendChild(document.createTextNode(ogg.Anagrafica[i].Sport[0].Sport1 == undefined ? "" : ogg.Anagrafica[i].Sport[0].Sport1));
+                rigaSport1.appendChild(document.createTextNode(ogg.Anagrafica[i].Sport[0]?.Sport1 || ""));
 
                 var rigaSport2 = document.createElement("td");
-                rigaSport2.appendChild(document.createTextNode(ogg.Anagrafica[i].Sport[1].Sport2 == undefined ? "" : ogg.Anagrafica[i].Sport[1].Sport2));
+                rigaSport2.appendChild(document.createTextNode(ogg.Anagrafica[i].Sport[1]?.Sport2 || ""));
 
+                // Colonna Portfolio
+                var immagineCellPortfolio = document.createElement("td");
+                var linkPortfolio = document.createElement("a");
+                linkPortfolio.href = `portfolio.html?id=${ogg.Anagrafica[i].id}`; 
+                linkPortfolio.target = "_blank"; 
+
+                var imgPortfolio = document.createElement("img");
+                imgPortfolio.src = ogg.Anagrafica[i].Portfolio || ""; // Usa il campo Portfolio
+                imgPortfolio.alt = "Portfolio di " + ogg.Anagrafica[i].Nome;
+                imgPortfolio.style.width = "100px"; // Imposta una larghezza fissa per l'immagine
+
+                linkPortfolio.appendChild(imgPortfolio); 
+                immagineCellPortfolio.appendChild(linkPortfolio);
+                colonna.appendChild(immagineCellPortfolio);
+
+                // Colonna Immagine
                 var img = document.createElement("td");
                 let bottone = document.createElement("img");
-                bottone.src = ogg.Anagrafica[i].Immagine === undefined ? "" : ogg.Anagrafica[i].Immagine;
+                bottone.src = ogg.Anagrafica[i].Immagine || "";
                 bottone.classList.add("immagineProfilo");
 
                 bottone.addEventListener("click", function() {
@@ -96,6 +110,7 @@
                 var rigaBottone = document.createElement("td");
                 rigaBottone.appendChild(bottone);
 
+                // Aggiungi tutte le celle alla colonna
                 colonna.appendChild(rigaBottone);
                 colonna.appendChild(rigaNome);
                 colonna.appendChild(rigaCognome);
@@ -110,6 +125,7 @@
                 tabella.appendChild(colonna);
             }
 
+            // Aggiungi la tabella alla pagina
             document.getElementById("stringaJSON").appendChild(tabella);
         }
     </script>
