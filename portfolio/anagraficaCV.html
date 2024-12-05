@@ -37,6 +37,7 @@
             var intestazioneCampi = ["Immagine", "Nome", "Cognome", "Età", "Indirizzo", "Città", "Telefono 1", "Telefono 2", "Sport 1", "Sport 2", "Portfolio"];
             var intestazione = document.createElement("tr");
 
+            // Crea l'intestazione della tabella
             intestazioneCampi.forEach(function(campo) {
                 var header = document.createElement("th");
                 header.appendChild(document.createTextNode(campo));
@@ -44,9 +45,24 @@
             });
             tabella.appendChild(intestazione);
 
+            // Crea le righe della tabella
             ogg.persone.forEach(function(persona) {
                 var colonna = document.createElement("tr");
 
+                // Colonna immagine
+                var immagineCell = document.createElement("td");
+                var link = document.createElement("a");
+                link.href = `dettaglio.html?id=${persona.id}`;
+                link.target = "_blank";
+                var img = document.createElement("img");
+                img.src = persona.thumb || "placeholder.png"; // Placeholder in caso di immagine mancante
+                img.alt = "Immagine di " + persona.nome;
+                img.style.width = "100px";
+                link.appendChild(img);
+                immagineCell.appendChild(link);
+                colonna.appendChild(immagineCell);
+
+                // Colonne dati
                 var nomeCell = document.createElement("td");
                 nomeCell.appendChild(document.createTextNode(persona.nome));
                 colonna.appendChild(nomeCell);
@@ -67,41 +83,40 @@
                 cittaCell.appendChild(document.createTextNode(persona.citta));
                 colonna.appendChild(cittaCell);
 
+                var telefono1Cell = document.createElement("td");
+                telefono1Cell.appendChild(document.createTextNode(persona.telefoni?.[0] || ""));
+                colonna.appendChild(telefono1Cell);
 
-                //colonna CV
-                var immagineCell = document.createElement("td");
-                var link = document.createElement("a");
-                link.href = `dettaglio.html?id=${persona.id}`; 
-                link.target = "_blank"; 
+                var telefono2Cell = document.createElement("td");
+                telefono2Cell.appendChild(document.createTextNode(persona.telefoni?.[1] || ""));
+                colonna.appendChild(telefono2Cell);
 
-                var img = document.createElement("img");
-                img.src = persona.thumb;
-                img.alt = "Immagine di " + persona.nome;
-                img.style.width = "100px"; 
+                var sport1Cell = document.createElement("td");
+                sport1Cell.appendChild(document.createTextNode(persona.sport?.[0] || ""));
+                colonna.appendChild(sport1Cell);
 
-                link.appendChild(img);
-                immagineCell.appendChild(link);
-                colonna.appendChild(immagineCell);
+                var sport2Cell = document.createElement("td");
+                sport2Cell.appendChild(document.createTextNode(persona.sport?.[1] || ""));
+                colonna.appendChild(sport2Cell);
 
-
-                //colonna Portfolio
-                
-            });var immagineCellPortfolio = document.createElement("td");
+                // Colonna portfolio
+                var portfolioCell = document.createElement("td");
                 var linkPortfolio = document.createElement("a");
-                linkPortfolio.href = `portfolio.html?id=${persona.id}`; 
-                linkPortfolio.target = "_blank"; 
-
+                linkPortfolio.href = `portfolio.html?id=${persona.id}`;
+                linkPortfolio.target = "_blank";
                 var imgPortfolio = document.createElement("img");
-                imgPortfolio.src = persona.portfolio;
+                imgPortfolio.src = persona.portfolio || "placeholder_portfolio.png"; // Placeholder in caso di immagine mancante
                 imgPortfolio.alt = "Portfolio di " + persona.nome;
-                imgPortfolio.style.width = "100px"; 
+                imgPortfolio.style.width = "100px";
+                linkPortfolio.appendChild(imgPortfolio);
+                portfolioCell.appendChild(linkPortfolio);
+                colonna.appendChild(portfolioCell);
 
-                linkPortfolio.appendChild(imgPortfolio); 
-                immagineCellPortfolio.appendChild(linkPortfolio);
-                colonna.appendChild(immagineCellPortfolio);
-
+                // Aggiungi la riga alla tabella
                 tabella.appendChild(colonna);
+            });
 
+            // Aggiungi la tabella al contenitore
             document.getElementById("stringaJSON").appendChild(tabella);
         }
     </script>
