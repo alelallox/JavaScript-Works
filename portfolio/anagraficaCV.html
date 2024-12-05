@@ -1,6 +1,8 @@
 <html>
     <head>
+        <head>
         <link rel="stylesheet" href="Style.css">
+    </head>
     </head>
 
     <body>
@@ -13,7 +15,7 @@
             <br>
         </div>
 
-        <div id="risForm" style="display: none;">
+        <div id="risForm" style="visibility: hidden;">
             <div id="stringaJSON"> </div>
         </div>
 
@@ -34,7 +36,7 @@
 
             document.getElementById("formIngr").style.width = "0px";
             document.getElementById("formIngr").style.visibility = "hidden";
-            document.getElementById("risForm").style.display = "block";  // Cambiato da visibility a display
+            document.getElementById("risForm").style.visibility = "visible";
         }
 
         function mostraInfo(ogg) {
@@ -42,7 +44,6 @@
             var colonnaIndici = ["Immagine", "Nome", "Cognome", "Età", "Indirizzo", "Città", "Telefono 1", "Telefono 2", "Sport 1", "Sport 2"];
             var colonnaTit = document.createElement("tr");
 
-            // Aggiungi intestazioni alla tabella
             for (let i = 0; i < colonnaIndici.length; i++) {
                 var righe = document.createElement("th");
                 righe.appendChild(document.createTextNode(colonnaIndici[i]));
@@ -51,11 +52,9 @@
 
             tabella.appendChild(colonnaTit);
 
-            // Itera sui dati e crea le righe della tabella
             for (let i = 0; i < 3; i++) {
                 var colonna = document.createElement("tr");
 
-                // Dati dell'utente
                 var rigaNome = document.createElement("td");
                 rigaNome.appendChild(document.createTextNode(ogg.Anagrafica[i].Nome));
 
@@ -72,34 +71,32 @@
                 rigaCitta.appendChild(document.createTextNode(ogg.Anagrafica[i].Citta));
 
                 var rigaTelefono1 = document.createElement("td");
-                rigaTelefono1.appendChild(document.createTextNode(ogg.Anagrafica[i].Telefoni[0]?.Telefono1 || ""));
+                rigaTelefono1.appendChild(document.createTextNode(ogg.Anagrafica[i].Telefoni[0].Telefono1 == undefined ? "" : ogg.Anagrafica[i].Telefoni[0].Telefono1));
 
                 var rigaTelefono2 = document.createElement("td");
-                rigaTelefono2.appendChild(document.createTextNode(ogg.Anagrafica[i].Telefoni[1]?.Telefono2 || ""));
+                rigaTelefono2.appendChild(document.createTextNode(ogg.Anagrafica[i].Telefoni[1].Telefono2 == undefined ? "" : ogg.Anagrafica[i].Telefoni[1].Telefono2));
 
                 var rigaSport1 = document.createElement("td");
-                rigaSport1.appendChild(document.createTextNode(ogg.Anagrafica[i].Sport[0]?.Sport1 || ""));
+                rigaSport1.appendChild(document.createTextNode(ogg.Anagrafica[i].Sport[0].Sport1 == undefined ? "" : ogg.Anagrafica[i].Sport[0].Sport1));
 
                 var rigaSport2 = document.createElement("td");
-                rigaSport2.appendChild(document.createTextNode(ogg.Anagrafica[i].Sport[1]?.Sport2 || ""));
+                rigaSport2.appendChild(document.createTextNode(ogg.Anagrafica[i].Sport[1].Sport2 == undefined ? "" : ogg.Anagrafica[i].Sport[1].Sport2));
 
-                // Crea la colonna dell'immagine
-                var imgCell = document.createElement("td");
-                var bottone = document.createElement("img");
-                bottone.src = ogg.Anagrafica[i].Immagine || "";
+                var img = document.createElement("td");
+                let bottone = document.createElement("img");
+                bottone.src = ogg.Anagrafica[i].Immagine === undefined ? "" : ogg.Anagrafica[i].Immagine;
                 bottone.classList.add("immagineProfilo");
 
-                // Evento click sull'immagine
                 bottone.addEventListener("click", function() {
                     localStorage.setItem("id", ogg.Anagrafica[i].id);
                     console.log("Bottone premuto");
                     window.location.href = "cv.html";
                 });
 
-                imgCell.appendChild(bottone);
-                colonna.appendChild(imgCell);
+                var rigaBottone = document.createElement("td");
+                rigaBottone.appendChild(bottone);
 
-                // Aggiungi le altre colonne
+                colonna.appendChild(rigaBottone);
                 colonna.appendChild(rigaNome);
                 colonna.appendChild(rigaCognome);
                 colonna.appendChild(rigaEta);
@@ -110,11 +107,9 @@
                 colonna.appendChild(rigaSport1);
                 colonna.appendChild(rigaSport2);
 
-                // Aggiungi la riga alla tabella
                 tabella.appendChild(colonna);
             }
 
-            // Aggiungi la tabella alla pagina
             document.getElementById("stringaJSON").appendChild(tabella);
         }
     </script>
