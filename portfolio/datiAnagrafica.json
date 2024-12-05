@@ -5,6 +5,8 @@
             "id": "1",
 
             "Immagine": "roito.jpeg",
+
+            "portfolio": "portfolio.png",
             
             "Nome": "Daniel",
 
@@ -44,6 +46,8 @@
             "id": "2",
 
             "Immagine": "rovico.jpeg",
+
+            "portfolio": "portfolio.png",
             
             "Nome": "Luca",
 
@@ -83,6 +87,8 @@
             "id": "3",
 
             "Immagine": "santa.jpeg",
+
+            "portfolio": "portfolio.png",
             
             "Nome": "Gabriele",
 
