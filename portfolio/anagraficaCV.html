@@ -1,117 +1,95 @@
-<html>
-    <head>
-        <head>
-        <link rel="stylesheet" href="Style.css">
-    </head>
-    </head>
+function mostraInfo(ogg) {
+    var tabella = document.createElement("table");
+    var colonnaIndici = ["Immagine", "Nome", "Cognome", "Età", "Indirizzo", "Città", "Telefono 1", "Telefono 2", "Sport 1", "Sport 2", "Portfolio"];
+    var colonnaTit = document.createElement("tr");
 
-    <body>
+    for (let i = 0; i < colonnaIndici.length; i++) {
+        var righe = document.createElement("th");
+        righe.appendChild(document.createTextNode(colonnaIndici[i]));
+        colonnaTit.appendChild(righe);
+    }
 
-        <div id="formIngr" class="generale"> 
-            <div class="form">
-                <h1 class="Titolo"> Anagrafica JSON </h1>
-                <input type="button" onclick="caricaDati()" value="Carica dati">
-            </div>
-            <br>
-        </div>
+    tabella.appendChild(colonnaTit);
 
-        <div id="risForm" style="visibility: hidden;">
-            <div id="stringaJSON"> </div>
-        </div>
+    for (let i = 0; i < 3; i++) {
+        var colonna = document.createElement("tr");
 
-    </body>
+        var rigaNome = document.createElement("td");
+        rigaNome.appendChild(document.createTextNode(ogg.Anagrafica[i].Nome));
 
-    <script>
-        function caricaDati() {
-            var file = new XMLHttpRequest();
-            file.open("GET", "https://raw.githubusercontent.com/alelallox/JavaScript-Works/refs/heads/main/letturajson/datiAnagrafica.json", true);
-            file.send();
+        var rigaCognome = document.createElement("td");
+        rigaCognome.appendChild(document.createTextNode(ogg.Anagrafica[i].Cognome));
 
-            file.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    var jsonDoc = JSON.parse(file.responseText);
-                    mostraInfo(jsonDoc);
-                }
-            };
+        var rigaEta = document.createElement("td");
+        rigaEta.appendChild(document.createTextNode(ogg.Anagrafica[i].Eta));
 
-            document.getElementById("formIngr").style.width = "0px";
-            document.getElementById("formIngr").style.visibility = "hidden";
-            document.getElementById("risForm").style.visibility = "visible";
-        }
+        var rigaIndirizzo = document.createElement("td");
+        rigaIndirizzo.appendChild(document.createTextNode(ogg.Anagrafica[i].Indirizzo));
 
-        function mostraInfo(ogg) {
-            var tabella = document.createElement("table");
-            var colonnaIndici = ["Immagine", "Nome", "Cognome", "Età", "Indirizzo", "Città", "Telefono 1", "Telefono 2", "Sport 1", "Sport 2"];
-            var colonnaTit = document.createElement("tr");
+        var rigaCitta = document.createElement("td");
+        rigaCitta.appendChild(document.createTextNode(ogg.Anagrafica[i].Citta));
 
-            for (let i = 0; i < colonnaIndici.length; i++) {
-                var righe = document.createElement("th");
-                righe.appendChild(document.createTextNode(colonnaIndici[i]));
-                colonnaTit.appendChild(righe);
-            }
+        var rigaTelefono1 = document.createElement("td");
+        rigaTelefono1.appendChild(document.createTextNode(ogg.Anagrafica[i].Telefoni[0].Telefono1 == undefined ? "" : ogg.Anagrafica[i].Telefoni[0].Telefono1));
 
-            tabella.appendChild(colonnaTit);
+        var rigaTelefono2 = document.createElement("td");
+        rigaTelefono2.appendChild(document.createTextNode(ogg.Anagrafica[i].Telefoni[1].Telefono2 == undefined ? "" : ogg.Anagrafica[i].Telefoni[1].Telefono2));
 
-            for (let i = 0; i < 3; i++) {
-                var colonna = document.createElement("tr");
+        var rigaSport1 = document.createElement("td");
+        rigaSport1.appendChild(document.createTextNode(ogg.Anagrafica[i].Sport[0].Sport1 == undefined ? "" : ogg.Anagrafica[i].Sport[0].Sport1));
 
-                var rigaNome = document.createElement("td");
-                rigaNome.appendChild(document.createTextNode(ogg.Anagrafica[i].Nome));
+        var rigaSport2 = document.createElement("td");
+        rigaSport2.appendChild(document.createTextNode(ogg.Anagrafica[i].Sport[1].Sport2 == undefined ? "" : ogg.Anagrafica[i].Sport[1].Sport2));
 
-                var rigaCognome = document.createElement("td");
-                rigaCognome.appendChild(document.createTextNode(ogg.Anagrafica[i].Cognome));
+        var img = document.createElement("td");
+        let bottone = document.createElement("img");
+        bottone.src = ogg.Anagrafica[i].Immagine === undefined ? "" : ogg.Anagrafica[i].Immagine;
+        bottone.classList.add("immagineProfilo");
 
-                var rigaEta = document.createElement("td");
-                rigaEta.appendChild(document.createTextNode(ogg.Anagrafica[i].Eta));
+        bottone.addEventListener("click", function() {
+            localStorage.setItem("id", ogg.Anagrafica[i].id);
+            console.log("Bottone premuto");
+            window.location.href = "cv.html";
+        });
 
-                var rigaIndirizzo = document.createElement("td");
-                rigaIndirizzo.appendChild(document.createTextNode(ogg.Anagrafica[i].Indirizzo));
+        var rigaBottone = document.createElement("td");
+        rigaBottone.appendChild(bottone);
 
-                var rigaCitta = document.createElement("td");
-                rigaCitta.appendChild(document.createTextNode(ogg.Anagrafica[i].Citta));
+        // Aggiunta del portfolio
+        var immagineCellPortfolio = document.createElement("td");
+        var linkPortfolio = document.createElement("a");
+        linkPortfolio.href = `portfolio.html?id=${ogg.Anagrafica[i].id}`; 
+        linkPortfolio.target = "_blank"; 
 
-                var rigaTelefono1 = document.createElement("td");
-                rigaTelefono1.appendChild(document.createTextNode(ogg.Anagrafica[i].Telefoni[0].Telefono1 == undefined ? "" : ogg.Anagrafica[i].Telefoni[0].Telefono1));
+        var imgPortfolio = document.createElement("img");
+        imgPortfolio.src = ogg.Anagrafica[i].Portfolio === undefined ? "" : ogg.Anagrafica[i].Portfolio;
+        imgPortfolio.alt = "Portfolio di " + ogg.Anagrafica[i].Nome;
+        imgPortfolio.style.width = "100px"; 
 
-                var rigaTelefono2 = document.createElement("td");
-                rigaTelefono2.appendChild(document.createTextNode(ogg.Anagrafica[i].Telefoni[1].Telefono2 == undefined ? "" : ogg.Anagrafica[i].Telefoni[1].Telefono2));
+        linkPortfolio.appendChild(imgPortfolio); 
+        immagineCellPortfolio.appendChild(linkPortfolio);
 
-                var rigaSport1 = document.createElement("td");
-                rigaSport1.appendChild(document.createTextNode(ogg.Anagrafica[i].Sport[0].Sport1 == undefined ? "" : ogg.Anagrafica[i].Sport[0].Sport1));
+        // Aggiunta della descrizione del portfolio
+        var descrizionePortfolio = document.createElement("td");
+        var descrizioneTesto = document.createElement("p");
+        descrizioneTesto.textContent = ogg.Anagrafica[i].DescrizionePortfolio || "Descrizione non disponibile.";
+        descrizionePortfolio.appendChild(descrizioneTesto);
 
-                var rigaSport2 = document.createElement("td");
-                rigaSport2.appendChild(document.createTextNode(ogg.Anagrafica[i].Sport[1].Sport2 == undefined ? "" : ogg.Anagrafica[i].Sport[1].Sport2));
+        colonna.appendChild(rigaBottone);
+        colonna.appendChild(rigaNome);
+        colonna.appendChild(rigaCognome);
+        colonna.appendChild(rigaEta);
+        colonna.appendChild(rigaIndirizzo);
+        colonna.appendChild(rigaCitta);
+        colonna.appendChild(rigaTelefono1);
+        colonna.appendChild(rigaTelefono2);
+        colonna.appendChild(rigaSport1);
+        colonna.appendChild(rigaSport2);
+        colonna.appendChild(immagineCellPortfolio);
+        colonna.appendChild(descrizionePortfolio);
 
-                var img = document.createElement("td");
-                let bottone = document.createElement("img");
-                bottone.src = ogg.Anagrafica[i].Immagine === undefined ? "" : ogg.Anagrafica[i].Immagine;
-                bottone.classList.add("immagineProfilo");
+        tabella.appendChild(colonna);
+    }
 
-                bottone.addEventListener("click", function() {
-                    localStorage.setItem("id", ogg.Anagrafica[i].id);
-                    console.log("Bottone premuto");
-                    window.location.href = "cv.html";
-                });
-
-                var rigaBottone = document.createElement("td");
-                rigaBottone.appendChild(bottone);
-
-                colonna.appendChild(rigaBottone);
-                colonna.appendChild(rigaNome);
-                colonna.appendChild(rigaCognome);
-                colonna.appendChild(rigaEta);
-                colonna.appendChild(rigaIndirizzo);
-                colonna.appendChild(rigaCitta);
-                colonna.appendChild(rigaTelefono1);
-                colonna.appendChild(rigaTelefono2);
-                colonna.appendChild(rigaSport1);
-                colonna.appendChild(rigaSport2);
-
-                tabella.appendChild(colonna);
-            }
-
-            document.getElementById("stringaJSON").appendChild(tabella);
-        }
-    </script>
-
-</html>
+    document.getElementById("stringaJSON").appendChild(tabella);
+}
