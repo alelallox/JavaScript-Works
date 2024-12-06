@@ -6,10 +6,9 @@
     <link rel="stylesheet" href="style.css">
     <title>Anagrafica JSON</title>
 </head>
-<body>
+<body onload="caricaDati()">
     
     <h1 class="titolo">Anagrafica JSON</h1>
-    <input type="button" onclick="caricaDati()" value="Carica i dati">
 
     <div id="risForm" style="visibility: hidden;">
         <div id="stringaJSON"></div>
@@ -33,10 +32,6 @@
                     mostraInfo(jsonDoc);
                 }
             };
-        
-            document.getElementById("formIngr").style.width = "0px";
-            
-            document.getElementById("formIngr").style.visibility = "hidden";
         
             document.getElementById("risForm").style.visibility = "visible";
         
