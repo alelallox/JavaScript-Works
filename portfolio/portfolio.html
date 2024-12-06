@@ -1,68 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Portfolio</title>
-</head>
-<body>
-    <h1 class="titoloDettagli">Portfolio</h1>
-    <div id="dettagliCV"></div>
-    
-    <script>
-        function getPersonIdFromUrl(){
-            const params = new URLSearchParams(window.location.search);
-            return params.get("id");
-        }
+caricaFile(localStorage.getItem("indice"));
 
-        function caricaPortfolio(){
-            const idPersona = getPersonIdFromUrl();
-            if (!idPersona) {
-                document.getElementById("dettagliCV").innerText = "ID non trovato!";
-                return;
-            }
+funzione caricaFile(indice) {
 
-            const pfFile = `${idPersona}.xml`;
+    var xhttp = new XMLHttpRequest();
 
-            var file = new XMLHttpRequest();
-            file.open("GET", pfFile, true);
-            file.send();
-            file.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    const pfData = file.responseXML;
+    xhttp.onreadystatechange = funzione() {
 
-                    if (pfData) {
-                        mostraDettagliCV(pfData);
-                    } else {
-                        document.getElementById("dettagliCV").innerText = "Errore nel parsing del file XML.";
-                    }
+      se (questo.statopronto == 4 && questo.stato == 200) {
 
-                } else if (this.readyState == 4) {
-                    document.getElementById("dettagliCV").innerText = "CV non trovato!";
-                }
-            };
-        }
+        gestisciXML(questo);
+      
+      }
+    };
 
-        function mostraDettagliCV(pfData){
-            const dettagliDiv = document.getElementById("dettagliCV");
-            
-            const titolo = pfData.getElementsByTagName("titolo")[0]?.textContent || "Nome non disponibile";
-            const abstract = pfData.getElementsByTagName("abstract")[0]?.textContent || "Cognome non disponibile";
-            const link = pfData.getElementsByTagName("link")[0]?.textContent || "Professione non disponibile";
-            
-            dettagliDiv.innerHTML = `
-                <div class="container-pf">
-                    <div class="info-portfolio">
-                        <p class="titolo-sezione">${titolo}</p>
-                        <p class="abstract-portfolio"> ${abstract}</p>
-                        <p><a href="${link}" target="_blank">${link}</a></p>
-                    </div>
-                </div>
-            `;
-        }
+    const nome = "https://raw.githubusercontent.com/aleallox/JavaScript-Works/refs/heads/main/portfolio/" + indice + ".xml"
 
-        caricaPortfolio();
-    </script>
-</body>
-</html>
+    xhttp.open("GET", nome, true);
+
+    Invia();
+}
+
+funzione gestisciXML(xml) {
+
+    var xmlDoc = xml.responseXML;
+
+    console.log(xml.responseXML)
+
+    var utente = xmlDoc.getElementsByTagName("Utente");
+
+    const titolo = utente[0].getElementsByTagName("Titolo")[0].childNodes[0].nodeValue;
+
+    const abstract = utente[0].getElementsByTagName("Abstract")[0].childNodes[0].nodeValue;
+
+    const risorsa = utente[0].getElementsByTagName("Link")[0].childNodes[0].nodeValue;
+
+    document.getElementById("outTitolo").innerHTML = titolo;
+
+    document.getElementById("outAbstract").innerHTML = abstract;
+
+    document.getElementById("outRisorsa").innerHTML = risorsa;
+
+  }
