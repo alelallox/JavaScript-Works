@@ -1,110 +1,160 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Anagrafica JSON</title>
-</head>
-<body>
+function caricaDati() {
+
+    var file = new XMLHttpRequest();
     
-    <h1 class="titolo">Anagrafica JSON</h1>
-    <input type="button" onclick="caricaDati()" value="Carica i dati">
-
-    <div id="risForm" style="visibility: hidden;">
-        <div id="stringaJSON"></div>
-    </div>
-
-    <script>
-        function caricaDati() {
-            var file = new XMLHttpRequest();
-            file.open("GET", "https://raw.githubusercontent.com/DavideStanco/TPS_DavideStanco/refs/heads/main/JSON/anagraficaCV/datiAnagrafica.json", true);
-            file.send();
-            file.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    var jsonDoc = JSON.parse(file.responseText);
-                    creaTabella(jsonDoc);
-                }
-            };
-            document.getElementById("risForm").style.visibility = "visible";
-        }
-
-        function creaTabella(ogg) {
-            // Svuota il contenuto precedente
-            document.getElementById("stringaJSON").innerHTML = '';
-
-            var tabella = document.createElement("table");
-            var intestazioneCampi = ["Immagine", "Nome", "Cognome", "Età", "Indirizzo", "Città", "Telefono 1", "Telefono 2", "Sport 1", "Sport 2"];
-            var intestazione = document.createElement("tr");
-
-            intestazioneCampi.forEach(function(campo) {
-                var header = document.createElement("th");
-                header.appendChild(document.createTextNode(campo));
-                intestazione.appendChild(header);
-            });
-            tabella.appendChild(intestazione);
-
-            ogg.persone.forEach(function(persona) {
-                var colonna = document.createElement("tr");
-
-                var nomeCell = document.createElement("td");
-                nomeCell.appendChild(document.createTextNode(persona.nome));
-                colonna.appendChild(nomeCell);
-
-                var cognomeCell = document.createElement("td");
-                cognomeCell.appendChild(document.createTextNode(persona.cognome));
-                colonna.appendChild(cognomeCell);
-
-                var etaCell = document.createElement("td");
-                etaCell.appendChild(document.createTextNode(persona.eta));
-                colonna.appendChild(etaCell);
-
-                var indirizzoCell = document.createElement("td");
-                indirizzoCell.appendChild(document.createTextNode(persona.indirizzo));
-                colonna.appendChild(indirizzoCell);
-
-                var cittaCell = document.createElement("td");
-                cittaCell.appendChild(document.createTextNode(persona.citta));
-                colonna.appendChild(cittaCell);
-
-
-                //colonna CV
-                var immagineCell = document.createElement("td");
-                var link = document.createElement("a");
-                link.href = `dettaglio.html?id=${persona.id}`; 
-                link.target = "_blank"; 
-
-                var img = document.createElement("img");
-                img.src = persona.thumb;
-                img.alt = "Immagine di " + persona.nome;
-                img.style.width = "100px"; 
-
-                link.appendChild(img);
-                immagineCell.appendChild(link);
-                colonna.appendChild(immagineCell);
-
-
-                //colonna Portfolio
-                
-            });var immagineCellPortfolio = document.createElement("td");
-                var linkPortfolio = document.createElement("a");
-                linkPortfolio.href = `portfolio.html?id=${persona.id}`; 
-                linkPortfolio.target = "_blank"; 
-
-                var imgPortfolio = document.createElement("img");
-                imgPortfolio.src = persona.portfolio;
-                imgPortfolio.alt = "Portfolio di " + persona.nome;
-                imgPortfolio.style.width = "100px"; 
-
-                linkPortfolio.appendChild(imgPortfolio); 
-                immagineCellPortfolio.appendChild(linkPortfolio);
-                colonna.appendChild(immagineCellPortfolio);
-
-                tabella.appendChild(colonna);
-
-            document.getElementById("stringaJSON").appendChild(tabella);
-        }
-    </script>
+    file.open("GET", "https://raw.githubusercontent.com/alelallox/JavaScript-Works/refs/heads/main/portfolio/datiAnagrafica.json", true);
     
-</body>
-</html>
+    file.send();
+    
+    file.onreadystatechange = function() {
+        
+        if (this.readyState == 4 && this.status == 200) {
+           
+            var jsonDoc = JSON.parse(file.responseText);
+            
+            mostraInfo(jsonDoc);
+        }
+    };
+
+    document.getElementById("formIngr").style.width = "0px";
+    
+    document.getElementById("formIngr").style.visibility = "hidden";
+
+    document.getElementById("risForm").style.visibility = "visible";
+
+}
+
+function mostraInfo(ogg) {
+    
+    var tabella = document.createElement("table");
+
+    var colonnaIndici = ["Immagine", "Nome", "Cognome", "Età", "Indirizzo", "Città", "Telefono 1", "Telefono 2", "Sport 1", "Sport 2", "PortFoglio"];
+
+    var colonnaTit = document.createElement("tr");
+
+    for(let i = 0; i < colonnaIndici.length; i++) {
+
+        var righe = document.createElement("th");
+
+        righe.appendChild(document.createTextNode(colonnaIndici[i]));
+
+        colonnaTit.appendChild(righe);
+    }
+
+    const titolo = document.createElement("h1");
+
+    titolo.classList.add("Titolo");
+
+    titolo.appendChild(document.createTextNode("Anagrafica"))
+
+    document.getElementById("stringaJSON").appendChild(titolo);
+
+    tabella.appendChild(colonnaTit);
+
+    for (let i = 0; i < 3; i++) {
+        
+        var colonna = document.createElement("tr");
+       
+        var rigaNome = document.createElement("td");
+
+        rigaNome.appendChild(document.createTextNode(ogg.Anagrafica[i].Nome));
+
+        var rigaCognome = document.createElement("td");
+        
+        rigaCognome.appendChild(document.createTextNode(ogg.Anagrafica[i].Cognome));
+
+        var rigaEta = document.createElement("td");
+        
+        rigaEta.appendChild(document.createTextNode(ogg.Anagrafica[i].Eta));
+
+        var rigaIndirizzo = document.createElement("td");
+        
+        rigaIndirizzo.appendChild(document.createTextNode(ogg.Anagrafica[i].Indirizzo));
+
+        var rigaCitta = document.createElement("td");
+        
+        rigaCitta.appendChild(document.createTextNode(ogg.Anagrafica[i].Citta));
+
+        var rigaTelefono1 = document.createElement("td");
+
+        rigaTelefono1.appendChild(document.createTextNode(ogg.Anagrafica[i].Telefoni[0].Telefono1 == undefined ? "" :  ogg.Anagrafica[i].Telefoni[0].Telefono1));
+
+        var rigaTelefono2 = document.createElement("td");
+       
+        rigaTelefono2.appendChild(document.createTextNode(ogg.Anagrafica[i].Telefoni[1].Telefono2 == undefined ? "" : ogg.Anagrafica[i].Telefoni[1].Telefono2));
+        
+        var rigaSport1 = document.createElement("td");
+
+        rigaSport1.appendChild(document.createTextNode(ogg.Anagrafica[i].Sport[0].Sport1 == undefined ? "" :  ogg.Anagrafica[i].Sport[0].Sport1));
+        
+        var rigaSport2 = document.createElement("td");
+
+        rigaSport2.appendChild(document.createTextNode(ogg.Anagrafica[i].Sport[1].Sport2 == undefined ? "" : ogg.Anagrafica[i].Sport[1].Sport2));
+
+        var img = document.createElement("td");
+
+        let bottone = document.createElement("img");
+
+        bottone.src = ogg.Anagrafica[i].Immagine === undefined ? "" : ogg.Anagrafica[i].Immagine;
+
+        bottone.classList.add("immagineProfilo")
+
+        bottone.addEventListener("click", function() {
+
+            localStorage.setItem("id", ogg.Anagrafica[i].id);
+
+            console.log("Bottone premuto");
+
+            window.location.href = "Cv.html";
+        });
+
+        let bottonePt = document.createElement("img");
+
+        bottonePt.src = "Documento.svg";
+
+        bottonePt.classList.add("immagine")
+
+        bottonePt.addEventListener("click", function() {
+
+            localStorage.setItem("indice", ogg.Anagrafica[i].id);
+
+            console.log("Bottone premuto");
+
+            window.location.href = "Portfoglio.html";
+        });
+
+        var rigaBottone = document.createElement("td");
+
+        var rigaBottonePf = document.createElement("td");
+
+        rigaBottonePf.appendChild(bottonePt);
+        
+        rigaBottone.appendChild(bottone);
+        
+        colonna.appendChild(rigaBottone);
+
+        colonna.appendChild(rigaNome);
+
+        colonna.appendChild(rigaCognome);
+
+        colonna.appendChild(rigaEta);
+
+        colonna.appendChild(rigaIndirizzo);
+
+        colonna.appendChild(rigaCitta);
+
+        colonna.appendChild(rigaTelefono1);
+
+        colonna.appendChild(rigaTelefono2);
+
+        colonna.appendChild(rigaSport1);
+
+        colonna.appendChild(rigaSport2);
+
+        colonna.appendChild(rigaBottonePf);
+
+        tabella.appendChild(colonna);
+    }
+
+    document.getElementById("stringaJSON").appendChild(tabella);
+}
