@@ -48,18 +48,18 @@
         
             xhttp.onreadystatechange = function() {
         
-              if (this.readyState == 4 && this.status == 200) {
+            if (this.readyState == 4 && this.status == 200) {
         
                 gestisciXML(this);
               
-              }
-            };
+            }
+        };
         
-            const nome = "https://raw.githubusercontent.com/Mattia-Visentin/mattiavise/refs/heads/main/CVPorfoglio/" + indice + ".xml"
-        
-            xhttp.open("GET", nome, true);
-        
-            xhttp.send();
+        const nome = "https://raw.githubusercontent.com/Mattia-Visentin/mattiavise/refs/heads/main/CVPorfoglio/" + indice + ".xml"
+    
+        xhttp.open("GET", nome, true);
+    
+        xhttp.send();
         }
         
         function gestisciXML(xml) {
