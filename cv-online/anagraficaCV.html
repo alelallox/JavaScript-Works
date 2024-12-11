@@ -1,16 +1,13 @@
 <html>
     <head>
-        <head>
         <link rel="stylesheet" href="Style.css">
     </head>
-    </head>
 
-    <body>
+    <body onload="caricaDati()">
 
         <div id="formIngr" class="generale"> 
             <div class="form">
                 <h1 class="Titolo"> Anagrafica JSON </h1>
-                <input type="button" onclick="caricaDati()" value="Carica dati">
             </div>
             <br>
         </div>
@@ -113,5 +110,4 @@
             document.getElementById("stringaJSON").appendChild(tabella);
         }
     </script>
-
 </html>
