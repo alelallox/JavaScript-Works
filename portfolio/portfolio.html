@@ -31,7 +31,7 @@
         let indice = localStorage.getItem("id");
 //        caricaFile(indice1);
         
-/*
+
         function caricaFile(indice) {
         
             var xhttp = new XMLHttpRequest();
@@ -48,19 +48,9 @@
             
             console.log("URL del file XML:", nome); // Aggiungi il log per il debug
         }
-*/
 
-        var xhttp = new XMLHttpRequest();
-        const nome = "2.xml";
 
-        xhttp.open("GET", nome, true);
-        xhttp.send();
         
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                gestisciXML(this);
-            }
-        };
         
         
         function gestisciXML(xml) {
