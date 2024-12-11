@@ -27,7 +27,6 @@
     </body>
 
     <script>
-        // Carica il file XML al caricamento della pagina
         let indice = localStorage.getItem("id");
         
         console.log(indice);
@@ -48,17 +47,14 @@
             // Recupero del documento XML
             var xmlDoc = xml.responseXML;
         
-            console.log(xml.responseXML); // Mostra il contenuto XML nella console
-        
-            // Accedo ai dati all'interno del nodo <portfolio>
+            console.log(xml.responseXML); 
+            
             var portfolio = xmlDoc.getElementsByTagName("portfolio")[0];
 
-            // Estraggo i valori da <titolo>, <abstract> e <link>
             const titolo = portfolio.getElementsByTagName("titolo")[0].childNodes[0].nodeValue;
             const abstract = portfolio.getElementsByTagName("abstract")[0].childNodes[0].nodeValue;
             const risorsa = portfolio.getElementsByTagName("link")[0].childNodes[0].nodeValue;
 
-            // Inserisco i dati estratti nei rispettivi elementi HTML
             document.getElementById("outTitolo").innerHTML = titolo;
             document.getElementById("outAbstract").innerHTML = abstract;
             document.getElementById("outRisorsa").innerHTML = risorsa;
