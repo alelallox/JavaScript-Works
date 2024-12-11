@@ -29,13 +29,11 @@
 
     <script>
         // Carica il file XML al caricamento della pagina
-        caricaFile(localStorage.getItem("id"));
+        let indice1 = localStorage.getItem("id");
+        caricaFile(indice1);
+        
 
         function caricaFile(indice) {
-            if (!indice) {
-                console.log(indice);
-                return;
-            }
         
             var xhttp = new XMLHttpRequest();
         
