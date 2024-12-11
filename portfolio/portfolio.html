@@ -41,28 +41,28 @@
 
     <script>
         caricaFile(localStorage.getItem("indice"));
-
-        funzione caricaFile(indice) {
+        
+        function caricaFile(indice) {
         
             var xhttp = new XMLHttpRequest();
         
-            xhttp.onreadystatechange = funzione() {
+            xhttp.onreadystatechange = function() {
         
-              se (questo.statopronto == 4 && questo.stato == 200) {
+              if (this.readyState == 4 && this.status == 200) {
         
-                gestisciXML(questo);
+                gestisciXML(this);
               
               }
             };
         
-            const nome = "https://raw.githubusercontent.com/aleallox/JavaScript-Works/refs/heads/main/portfolio/" + indice + ".xml"
+            const nome = "https://raw.githubusercontent.com/Mattia-Visentin/mattiavise/refs/heads/main/CVPorfoglio/" + indice + ".xml"
         
             xhttp.open("GET", nome, true);
         
-            Invia();
+            xhttp.send();
         }
         
-        funzione gestisciXML(xml) {
+        function gestisciXML(xml) {
         
             var xmlDoc = xml.responseXML;
         
@@ -82,8 +82,7 @@
         
             document.getElementById("outRisorsa").innerHTML = risorsa;
         
-        }
-                
+          }        
     </script>
 
 </html>
