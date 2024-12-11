@@ -58,7 +58,7 @@
         
             titolo.classList.add("Titolo");
         
-            titolo.appendChild(document.createTextNode("Anagrafica"))
+            titolo.appendChild(document.createTextNode("datiAnagrafica"))
         
             document.getElementById("stringaJSON").appendChild(titolo);
         
@@ -70,51 +70,51 @@
                
                 var rigaNome = document.createElement("td");
         
-                rigaNome.appendChild(document.createTextNode(ogg.Anagrafica[i].Nome));
+                rigaNome.appendChild(document.createTextNode(ogg.datiAnagrafica[i].Nome));
         
                 var rigaCognome = document.createElement("td");
                 
-                rigaCognome.appendChild(document.createTextNode(ogg.Anagrafica[i].Cognome));
+                rigaCognome.appendChild(document.createTextNode(ogg.datiAnagrafica[i].Cognome));
         
                 var rigaEta = document.createElement("td");
                 
-                rigaEta.appendChild(document.createTextNode(ogg.Anagrafica[i].Eta));
+                rigaEta.appendChild(document.createTextNode(ogg.datiAnagrafica[i].Eta));
         
                 var rigaIndirizzo = document.createElement("td");
                 
-                rigaIndirizzo.appendChild(document.createTextNode(ogg.Anagrafica[i].Indirizzo));
+                rigaIndirizzo.appendChild(document.createTextNode(ogg.datiAnagrafica[i].Indirizzo));
         
                 var rigaCitta = document.createElement("td");
                 
-                rigaCitta.appendChild(document.createTextNode(ogg.Anagrafica[i].Citta));
+                rigaCitta.appendChild(document.createTextNode(ogg.datiAnagrafica[i].Citta));
         
                 var rigaTelefono1 = document.createElement("td");
         
-                rigaTelefono1.appendChild(document.createTextNode(ogg.Anagrafica[i].Telefoni[0].Telefono1 == undefined ? "" :  ogg.Anagrafica[i].Telefoni[0].Telefono1));
+                rigaTelefono1.appendChild(document.createTextNode(ogg.datiAnagrafica[i].Telefoni[0].Telefono1 == undefined ? "" :  ogg.Anagrafica[i].Telefoni[0].Telefono1));
         
                 var rigaTelefono2 = document.createElement("td");
                
-                rigaTelefono2.appendChild(document.createTextNode(ogg.Anagrafica[i].Telefoni[1].Telefono2 == undefined ? "" : ogg.Anagrafica[i].Telefoni[1].Telefono2));
+                rigaTelefono2.appendChild(document.createTextNode(ogg.datiAnagrafica[i].Telefoni[1].Telefono2 == undefined ? "" : ogg.Anagrafica[i].Telefoni[1].Telefono2));
                 
                 var rigaSport1 = document.createElement("td");
         
-                rigaSport1.appendChild(document.createTextNode(ogg.Anagrafica[i].Sport[0].Sport1 == undefined ? "" :  ogg.Anagrafica[i].Sport[0].Sport1));
+                rigaSport1.appendChild(document.createTextNode(ogg.datiAnagrafica[i].Sport[0].Sport1 == undefined ? "" :  ogg.Anagrafica[i].Sport[0].Sport1));
                 
                 var rigaSport2 = document.createElement("td");
         
-                rigaSport2.appendChild(document.createTextNode(ogg.Anagrafica[i].Sport[1].Sport2 == undefined ? "" : ogg.Anagrafica[i].Sport[1].Sport2));
+                rigaSport2.appendChild(document.createTextNode(ogg.datiAnagrafica[i].Sport[1].Sport2 == undefined ? "" : ogg.Anagrafica[i].Sport[1].Sport2));
         
                 var img = document.createElement("td");
         
                 let bottone = document.createElement("img");
         
-                bottone.src = ogg.Anagrafica[i].Immagine === undefined ? "" : ogg.Anagrafica[i].Immagine;
+                bottone.src = ogg.datiAnagrafica[i].Immagine === undefined ? "" : ogg.Anagrafica[i].Immagine;
         
                 bottone.classList.add("immagineProfilo")
         
                 bottone.addEventListener("click", function() {
         
-                    localStorage.setItem("id", ogg.Anagrafica[i].id);
+                    localStorage.setItem("id", ogg.datiAnagrafica[i].id);
         
                     console.log("Bottone premuto");
         
@@ -129,7 +129,7 @@
         
                 bottonePt.addEventListener("click", function() {
         
-                    localStorage.setItem("indice", ogg.Anagrafica[i].id);
+                    localStorage.setItem("indice", ogg.datiAnagrafica[i].id);
         
                     console.log("Bottone premuto");
         
