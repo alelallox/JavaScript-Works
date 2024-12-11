@@ -28,31 +28,20 @@
 
     <script>
         // Carica il file XML al caricamento della pagina
-        let indice1 = localStorage.getItem("id");
-        caricaFile(indice1);
-        
+        let indice = localStorage.getItem("id");
+       
+        var xhttp = new XMLHttpRequest();
+        const nome = "1.xml";
 
-        function caricaFile(indice) {
+        xhttp.open("GET", nome, true);
+        xhttp.send();
         
-            var xhttp = new XMLHttpRequest();
-            const nome = "1.xml";
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                gestisciXML(this);
+            }
+        };
 
-            xhttp.open("GET", nome, true);
-            xhttp.send();
-            
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    gestisciXML(this);
-                }
-            };
-            
-            console.log("URL del file XML:", nome); // Aggiungi il log per il debug
-        }
-
-
-        
-        
-        
         function gestisciXML(xml) {
             // Recupero del documento XML
             var xmlDoc = xml.responseXML;
