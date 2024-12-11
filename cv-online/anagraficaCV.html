@@ -41,7 +41,7 @@
             
             var tabella = document.createElement("table");
         
-            var colonnaIndici = ["Immagine", "Nome", "Cognome", "Età", "Indirizzo", "Città", "Telefono 1", "Telefono 2", "Sport 1", "Sport 2", "PortFoglio"];
+            var colonnaIndici = ["Immagine", "Nome", "Cognome", "Età", "Indirizzo", "Città", "Telefono 1", "Telefono 2", "Sport 1", "Sport 2"];
         
             var colonnaTit = document.createElement("tr");
         
@@ -119,26 +119,7 @@
                     window.location.href = "cv.html";
                 });
         
-                let bottonePt = document.createElement("img");
-        
-                bottonePt.src = "portfolio.png";
-        
-                bottonePt.classList.add("immagine")
-        
-                bottonePt.addEventListener("click", function() {
-        
-                    localStorage.setItem("id", ogg.Anagrafica[i].id);
-        
-                    console.log("Bottone premuto");
-        
-                    window.location.href = "portfolio.html";
-                });
-        
                 var rigaBottone = document.createElement("td");
-        
-                var rigaBottonePf = document.createElement("td");
-        
-                rigaBottonePf.appendChild(bottonePt);
                 
                 rigaBottone.appendChild(bottone);
                 
@@ -161,8 +142,6 @@
                 colonna.appendChild(rigaSport1);
         
                 colonna.appendChild(rigaSport2);
-        
-                colonna.appendChild(rigaBottonePf);
         
                 tabella.appendChild(colonna);
             }
