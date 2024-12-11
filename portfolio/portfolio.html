@@ -31,22 +31,25 @@
         // Carica il file XML al caricamento della pagina
         caricaFile(localStorage.getItem("indice"));
 
-        // Funzione che carica il file XML
         function caricaFile(indice) {
+            if (!indice) {
+                console.error("Indice non valido nel localStorage!");
+                return;
+            }
         
             var xhttp = new XMLHttpRequest();
         
             xhttp.onreadystatechange = function() {
-                // Quando il file XML è caricato con successo, chiama la funzione per gestirlo
                 if (this.readyState == 4 && this.status == 200) {
                     gestisciXML(this);
                 }
             };
         
-            // URL del file XML da caricare (prende l'indice dal localStorage)
+            // URL del file XML da caricare
             const nome = "https://raw.githubusercontent.com/alelallox/JavaScript-Works/refs/heads/main/portfolio/" + indice + ".xml";
-    
-            // Invio della richiesta GET per caricare il file XML
+            
+            console.log("URL del file XML:", nome); // Aggiungi il log per il debug
+        
             xhttp.open("GET", nome, true);
             xhttp.send();
         }
