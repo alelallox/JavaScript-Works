@@ -1,38 +1,26 @@
-
 <html>
     <head>
         <link rel="stylesheet" href="Style03.css">
     </head>
 
     <body>
-            
         
         <div>
-
             <h1 style="text-align: center;"> PortFoglio </h1>
 
             <div class="divPortFoglio">
-                
                 <h2> Titolo </h2>
-
                 <p id="outTitolo"> </p>
-
             </div>
 
             <div class="divPortFoglio">
-
                 <h2> Abstract </h2>
-
                 <p id="outAbstract"> </p>
-
             </div>
             
             <div class="divPortFoglio"> 
-                
                 <h2> Risorsa </h2>
-
                 <p id="outRisorsa"> </p>
-
             </div>
             
         </div>
@@ -40,45 +28,49 @@
     </body>
 
     <script>
+        // Carica il file XML al caricamento della pagina
         caricaFile(localStorage.getItem("indice"));
-        
+
+        // Funzione che carica il file XML
         function caricaFile(indice) {
         
             var xhttp = new XMLHttpRequest();
         
             xhttp.onreadystatechange = function() {
+                // Quando il file XML è caricato con successo, chiama la funzione per gestirlo
+                if (this.readyState == 4 && this.status == 200) {
+                    gestisciXML(this);
+                }
+            };
         
-            if (this.readyState == 4 && this.status == 200) {
-        
-                gestisciXML(this);
-              
-            }
-        };
-        
-        const nome = "https://raw.githubusercontent.com/alelallox/JavaScript-Works/refs/heads/main/portfolio/1.xml"
-        //const nome = "pf_1.xml"
+            // URL del file XML da caricare (prende l'indice dal localStorage)
+            const nome = "https://raw.githubusercontent.com/alelallox/JavaScript-Works/refs/heads/main/portfolio/" + indice + ".xml";
     
-        xhttp.open("GET", nome, true);
-    
-        xhttp.send();
+            // Invio della richiesta GET per caricare il file XML
+            xhttp.open("GET", nome, true);
+            xhttp.send();
         }
         
+        // Funzione per gestire e visualizzare i dati dal file XML
         function gestisciXML(xml) {
-        
+            // Recupero del documento XML
             var xmlDoc = xml.responseXML;
         
-            console.log(xml.responseXML)
+            console.log(xml.responseXML); // Mostra il contenuto XML nella console
         
+            // Accedo ai dati all'interno del nodo <portfolio>
             var portfolio = xmlDoc.getElementsByTagName("portfolio")[0];
+
+            // Estraggo i valori da <titolo>, <abstract> e <link>
             const titolo = portfolio.getElementsByTagName("titolo")[0].childNodes[0].nodeValue;
             const abstract = portfolio.getElementsByTagName("abstract")[0].childNodes[0].nodeValue;
             const risorsa = portfolio.getElementsByTagName("link")[0].childNodes[0].nodeValue;
 
+            // Inserisco i dati estratti nei rispettivi elementi HTML
             document.getElementById("outTitolo").innerHTML = titolo;
             document.getElementById("outAbstract").innerHTML = abstract;
             document.getElementById("outRisorsa").innerHTML = risorsa;
-        
-          }        
+        }        
     </script>
 
 </html>
