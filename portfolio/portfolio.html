@@ -1,43 +1,89 @@
-caricaFile(localStorage.getItem("indice"));
 
-funzione caricaFile(indice) {
+<html>
+    <head>
+        <link rel="stylesheet" href="Style03.css">
+    </head>
 
-    var xhttp = new XMLHttpRequest();
+    <body>
+            
+        
+        <div>
 
-    xhttp.onreadystatechange = funzione() {
+            <h1 style="text-align: center;"> PortFoglio </h1>
 
-      se (questo.statopronto == 4 && questo.stato == 200) {
+            <div class="divPortFoglio">
+                
+                <h2> Titolo </h2>
 
-        gestisciXML(questo);
-      
-      }
-    };
+                <p id="outTitolo"> </p>
 
-    const nome = "https://raw.githubusercontent.com/aleallox/JavaScript-Works/refs/heads/main/portfolio/" + indice + ".xml"
+            </div>
 
-    xhttp.open("GET", nome, true);
+            <div class="divPortFoglio">
 
-    Invia();
-}
+                <h2> Abstract </h2>
 
-funzione gestisciXML(xml) {
+                <p id="outAbstract"> </p>
 
-    var xmlDoc = xml.responseXML;
+            </div>
+            
+            <div class="divPortFoglio"> 
+                
+                <h2> Risorsa </h2>
 
-    console.log(xml.responseXML)
+                <p id="outRisorsa"> </p>
 
-    var utente = xmlDoc.getElementsByTagName("Utente");
+            </div>
+            
+        </div>
+        
+    </body>
 
-    const titolo = utente[0].getElementsByTagName("Titolo")[0].childNodes[0].nodeValue;
+    <script>
+        caricaFile(localStorage.getItem("indice"));
 
-    const abstract = utente[0].getElementsByTagName("Abstract")[0].childNodes[0].nodeValue;
+        funzione caricaFile(indice) {
+        
+            var xhttp = new XMLHttpRequest();
+        
+            xhttp.onreadystatechange = funzione() {
+        
+              se (questo.statopronto == 4 && questo.stato == 200) {
+        
+                gestisciXML(questo);
+              
+              }
+            };
+        
+            const nome = "https://raw.githubusercontent.com/aleallox/JavaScript-Works/refs/heads/main/portfolio/" + indice + ".xml"
+        
+            xhttp.open("GET", nome, true);
+        
+            Invia();
+        }
+        
+        funzione gestisciXML(xml) {
+        
+            var xmlDoc = xml.responseXML;
+        
+            console.log(xml.responseXML)
+        
+            var utente = xmlDoc.getElementsByTagName("Utente");
+        
+            const titolo = utente[0].getElementsByTagName("Titolo")[0].childNodes[0].nodeValue;
+        
+            const abstract = utente[0].getElementsByTagName("Abstract")[0].childNodes[0].nodeValue;
+        
+            const risorsa = utente[0].getElementsByTagName("Link")[0].childNodes[0].nodeValue;
+        
+            document.getElementById("outTitolo").innerHTML = titolo;
+        
+            document.getElementById("outAbstract").innerHTML = abstract;
+        
+            document.getElementById("outRisorsa").innerHTML = risorsa;
+        
+        }
+                
+    </script>
 
-    const risorsa = utente[0].getElementsByTagName("Link")[0].childNodes[0].nodeValue;
-
-    document.getElementById("outTitolo").innerHTML = titolo;
-
-    document.getElementById("outAbstract").innerHTML = abstract;
-
-    document.getElementById("outRisorsa").innerHTML = risorsa;
-
-  }
+</html>
