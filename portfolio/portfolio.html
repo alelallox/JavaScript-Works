@@ -68,18 +68,13 @@
         
             console.log(xml.responseXML)
         
-            var utente = xmlDoc.getElementsByTagName("Utente");
-        
-            const titolo = utente[0].getElementsByTagName("Titolo")[0].childNodes[0].nodeValue;
-        
-            const abstract = utente[0].getElementsByTagName("Abstract")[0].childNodes[0].nodeValue;
-        
-            const risorsa = utente[0].getElementsByTagName("Link")[0].childNodes[0].nodeValue;
-        
+            var portfolio = xmlDoc.getElementsByTagName("portfolio")[0];
+            const titolo = portfolio.getElementsByTagName("titolo")[0].childNodes[0].nodeValue;
+            const abstract = portfolio.getElementsByTagName("abstract")[0].childNodes[0].nodeValue;
+            const risorsa = portfolio.getElementsByTagName("link")[0].childNodes[0].nodeValue;
+
             document.getElementById("outTitolo").innerHTML = titolo;
-        
             document.getElementById("outAbstract").innerHTML = abstract;
-        
             document.getElementById("outRisorsa").innerHTML = risorsa;
         
           }        
