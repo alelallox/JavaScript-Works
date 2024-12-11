@@ -81,25 +81,6 @@ input[type="text"], input[type="password"] {
     box-sizing: border-box;
 }
 
-/* ======== Pulsanti ======== */
-input[type="button"], button {
-    width: 60%;
-    height: 50px;
-    border-radius: 20px;
-    background-color: white;
-    color: black;
-    font-family: "PrincipaleBold";
-    border: 2px solid #ccc;
-    margin-top: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-input[type="button"]:hover, button:hover {
-    background-color: black;
-    color: white;
-}
-
 /* ======== Tabella ======== */
 table {
     width: 100%;
