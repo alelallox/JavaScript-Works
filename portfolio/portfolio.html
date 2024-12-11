@@ -31,7 +31,7 @@
         let indice = localStorage.getItem("id");
        
         var xhttp = new XMLHttpRequest();
-        const nome = "1.xml";
+        const nome = indice + ".xml";
 
         xhttp.open("GET", nome, true);
         xhttp.send();
