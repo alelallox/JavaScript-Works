@@ -36,20 +36,18 @@
         function caricaFile(indice) {
         
             var xhttp = new XMLHttpRequest();
-        
+            const nome = "https://raw.githubusercontent.com/alelallox/JavaScript-Works/refs/heads/main/portfolio/1.xml";
+
+            xhttp.open("GET", nome, true);
+            xhttp.send();
+            
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     gestisciXML(this);
                 }
             };
-        
-            // URL del file XML da caricare
-            const nome = "https://raw.githubusercontent.com/alelallox/JavaScript-Works/refs/heads/main/portfolio/1.xml";
             
             console.log("URL del file XML:", nome); // Aggiungi il log per il debug
-        
-            xhttp.open("GET", nome, true);
-            xhttp.send();
         }
         
         // Funzione per gestire e visualizzare i dati dal file XML
