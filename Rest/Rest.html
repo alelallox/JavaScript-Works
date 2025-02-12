@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var xmlhttp = new XMLHttpRequest();
+
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var file = JSON.parse(this.responseText);
+                        var out = "";
+
+                        for (var x in file) {
+                            out += "<tr><td>" + file[x].date + "</td><td>" + file[x].title.rendered + "</td></tr>";
+                        }
+
+                        document.getElementById("Visualizza").innerHTML = out;
+                    }
+                };
+
+                xmlhttp.open("GET", "https://seahawkmedia.com/wp-json/wp/v2/posts?search=Drupal", true);
+                xmlhttp.send();
+            });
+        </script>
+    </head>
+
+    <body>
+        <h1 class="titolo">POST Utenti</h1>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Titolo</th>
+                </tr>
+            </thead>
+            <tbody id="Visualizza"></tbody>
+        </table>
+    </body>
+</html>
