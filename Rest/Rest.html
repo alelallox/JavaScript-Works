@@ -1,39 +1,59 @@
 <html>
-    <head>
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                var xmlhttp = new XMLHttpRequest();
+<head>
+    <title>Metodo Post da API WordPress</title>
+    
+</head>
+<body>
 
-                xmlhttp.onreadystatechange = function () {
-                    if (this.readyState == 4 && this.status == 200) {
-                        var file = JSON.parse(this.responseText);
-                        var out = "";
-
-                        for (var x in file) {
-                            out += "<tr><td>" + file[x].date + "</td><td>" + file[x].title.rendered + "</td></tr>";
-                        }
-
-                        document.getElementById("Visualizza").innerHTML = out;
+<div class="container mt-5">
+    <h1>Post da API WordPress</h1>
+    <div class="form-group">
+        <label for="url">Inserisci URL del sito</label>
+        <input type="text" class="form-control" id="url" placeholder="Inserisci un sito web (che utilizzi l'API WordPress V2)">
+    </div>
+    <button class="btn btn-primary" onclick="getPosts()">Estrai Post</button>
+    <div id="errore"></div>
+    <table id="tabella" class="table table-bordered mt-4">
+    </table>
+</div>
+</body>
+<script>
+    var stringa = ""; 
+    
+    function getPosts() {
+        var urlSito = document.getElementById("url").value; 
+        
+        stringa = ""; 
+        document.getElementById("tabella").innerHTML = "";
+        document.getElementById("errore").innerHTML = ""; 
+    
+        if (!urlSito) {
+            alert("Inserisci un URL");
+            return;
+        }
+    
+        var xmlhttp = new XMLHttpRequest();
+    
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+                if (this.status == 200) {
+                    var obj = JSON.parse(this.responseText);
+                    stringa += "<thead><tr><th>ID</th><th>Titolo</th></tr></thead><tbody>";
+                    for (var x in obj) {
+                        stringa += "<tr><td>" + obj[x].id + "</td><td>" + obj[x].title.rendered + "</td></tr>";
                     }
-                };
-
-                xmlhttp.open("GET", "https://seahawkmedia.com/wp-json/wp/v2/posts?search=Drupal", true);
-                xmlhttp.send();
-            });
-        </script>
-    </head>
-
-    <body>
-        <h1 class="titolo">POST Utenti</h1>
-
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Data</th>
-                    <th>Titolo</th>
-                </tr>
-            </thead>
-            <tbody id="Visualizza"></tbody>
-        </table>
-    </body>
+                    
+                    stringa += "</tbody>";
+                    document.getElementById("tabella").innerHTML = stringa;
+                } else {
+                    document.getElementById("errore").innerHTML = `<p class="alert alert-danger">Errore nel  recupero dei dati: ${this.statusText}</p>`;
+                }
+            }
+        };
+    
+        var apiUrl = `https://${urlSito}/wp-json/wp/v2/posts`; 
+        xmlhttp.open("GET", apiUrl, true);
+        xmlhttp.send();
+    }
+</script>
 </html>
